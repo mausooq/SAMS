@@ -28,13 +28,14 @@ db.connect((err) => {
 });
 
 // Setting the public directory
-const publicDirectory =path.join(__dirname);
+const publicDirectory =path.join(__dirname,'./public');
+app.use(express.static(publicDirectory));
 // Setting the view engine to handlebars
 app.set('view engine', 'hbs');
 
 // Setting up the root route
 app.get("/", (req, res) => {
-   res.send("<h1>helloe world<h1>");
+  res.render("index")
 });
 
 // Starting the server
