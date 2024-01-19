@@ -12,17 +12,24 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+nav h3{
+  font-weight: bold;
+}
 nav ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 nav li {
-  margin: 0px 10px;
   list-style: none;
 }
 nav li a {
   color: #365486;
   text-decoration: none;
-  font-weight: bold
+  font-weight: bold;
+  padding: 5px 10px;
+}
+nav li a:hover{
+  text-decoration: none;
+  color: #2ab0dd;
 }
