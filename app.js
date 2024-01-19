@@ -40,5 +40,5 @@ app.get("/", (req, res) => {
 
 // Starting the server
 app.listen(5000, () => {
-   console.log("servr start on 8080");
+   console.log("servr start on 5000");
 });
