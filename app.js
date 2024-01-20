@@ -17,7 +17,6 @@ const db = mysql.createConnection({
    password: process.env.database_password,
    database: process.env.database_database
 });
-
 // Event handler for database connection error
 db.connect((err) => {
    if (err) {
@@ -32,12 +31,9 @@ const publicDirectory =path.join(__dirname,'./public');
 app.use(express.static(publicDirectory));
 // Setting the view engine to handlebars
 app.set('view engine', 'hbs');
-
-// Setting up the root route
-app.get("/", (req, res) => {
-  res.render("index")
-});
-
+//define router
+app.use('/',require('./routes/pages.js'))
+app.use('/auth',require('./routes/auth.js'))
 // Starting the server
 app.listen(5000, () => {
    console.log("servr start on 5000");
