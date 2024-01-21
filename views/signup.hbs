@@ -25,12 +25,11 @@
         SIGN UP
       </div>
       <div class="card-body">
-        <form action="/auth/signup" method="POST">
+        <form action="/auth/signup" method="post">
           <div class="mb-3">
             <label for="usn" class="form-label">USN</label>
             <input type="text" class="form-control" id="usn" name="usn">
           </div>
-
           <div class="mb-3">
             <label for="name" class="form-label">NAME</label>
             <input type="text" class="form-control" id="name" name="name">
@@ -47,10 +46,17 @@
             <label for="paswd" class="form-label">PASSWORD</label>
             <input type="password" class="form-control" id="paswd" name="password">
           </div>
+          <div class="mb-3">
+            <label for="cPaswd" class="form-label">CONFIRM PASSWORD</label>
+            <input type="password" class="form-control" id="cPaswd" name="cpassword">
+          </div>
           <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
       </div>
     </div>
+    {{#if message}}
+          <h4 class="alert alert-danger mt-4">{{message}}</h4>
+    {{/if}}
   </div>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
