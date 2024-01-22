@@ -43,7 +43,26 @@ exports.signup = async (req,res) => {
         }
               // If everything is fine, hash the password and insert the new user into the database
         let hasedPassword = await bcrypt.hash(password, 8);
-        console.log(hasedPassword);
+        // console.log(hasedPassword);
+
+        db.query("INSERT INTO STUDENT SET ?;",{
+            usn:usn,
+            name:name,
+            phone:phone,
+            email:email,
+            password:hasedPassword
+        },
+        () =>{
+            if(err){
+                console.log(err);
+            }
+            else{
+                        res.render('signup',{
+                        msg:'SignUp sucessfully'
+                });
+            }
+        }
+        );
     }); 
 };
 
