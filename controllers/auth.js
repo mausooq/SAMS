@@ -68,17 +68,30 @@ exports.signup = async (req,res) => {
 };
 
 exports.login = async (req,res) => {
-    // console.log(req.body);
+    console.log(req.body);
     const {email,password} = req.body;
-    db.query("SELECT * FROM STUDENT WHERE EMAIL = ?",[email],(err,results) => {
+    db.query("SELECT * FROM STUDENT WHERE EMAIL = ?",[email], async (err,results) => {
+        console.log(results);
         if(err) throw err;
         if(results.length > 0){
-                const dpassword=results
-        }
+                const dpassword = results[0].PASSWORD;
+                    // console.log(dpassword);
+                const passwordMatch = await bcrypt.compare(password,dpassword);
+                // console.log(passwordMatch)
+                if(passwordMatch){
+                    res.render('dashboard');
+                }
+                else{
+                    return res.render('login',{
+                        message:"Invalid Email or Password"
+                })
+        }   
+    }
         else{
             return res.render('login',{
                 message:"email not found"
-            })
+            });
         }
+        
     });
 }
