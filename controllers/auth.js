@@ -1,5 +1,6 @@
 // Import required modules
 const mysql = require("mysql2");
+const session = require('express-session');
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs');
 const { reset } = require("nodemon");
@@ -66,3 +67,18 @@ exports.signup = async (req,res) => {
     }); 
 };
 
+exports.login = async (req,res) => {
+    // console.log(req.body);
+    const {email,password} = req.body;
+    db.query("SELECT * FROM STUDENT WHERE EMAIL = ?",[email],(err,results) => {
+        if(err) throw err;
+        if(results.length > 0){
+                const dpassword=results
+        }
+        else{
+            return res.render('login',{
+                message:"email not found"
+            })
+        }
+    });
+}

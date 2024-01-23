@@ -29,6 +29,7 @@ db.connect((err) => {
 // Setting the public directory
 const publicDirectory =path.join(__dirname,'./public');
 app.use(express.static(publicDirectory));
+// Handling requests from the client-side JavaScript code
 // Setting the view engine to handlebars
 app.set('view engine', 'hbs');
 //define router

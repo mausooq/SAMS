@@ -10,4 +10,6 @@ router.use(bodyParser.urlencoded());
 
 
 router.post('/signup', authController.signup);
+router.post('/login', authController.login);
 module.exports = router;
+
