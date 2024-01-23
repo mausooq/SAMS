@@ -68,10 +68,10 @@ exports.signup = async (req,res) => {
 };
 
 exports.login = async (req,res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const {email,password} = req.body;
     db.query("SELECT * FROM STUDENT WHERE EMAIL = ?",[email], async (err,results) => {
-        console.log(results);
+        // console.log(results);
         if(err) throw err;
         if(results.length > 0){
                 const dpassword = results[0].PASSWORD;
@@ -79,6 +79,9 @@ exports.login = async (req,res) => {
                 const passwordMatch = await bcrypt.compare(password,dpassword);
                 // console.log(passwordMatch)
                 if(passwordMatch){
+               // Set session variables
+                req.session.loggedin = true;
+                req.session.email = email;
                     res.render('dashboard');
                 }
                 else{
@@ -95,3 +98,18 @@ exports.login = async (req,res) => {
         
     });
 }
+
+exports.logout = (req,res) =>{
+      // Clear session variables
+    req.session.loggedin= false;
+    req.session.email = null;
+// Redirect to login or any other page
+    res.render('index')
+}
+exports.dashboard = (req, res) => {
+    if (req.session.loggedin) {
+        res.render('dashboard');
+    } else {
+        res.redirect('/'); // Redirect to login if not logged in
+    }
+};

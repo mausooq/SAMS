@@ -8,8 +8,10 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded());
 
-
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
+router.get('/logout', authController.logout);
+
+
 module.exports = router;
 

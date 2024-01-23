@@ -3,6 +3,8 @@ const express = require("express");
 const mysql = require("mysql2");
 const path = require("path");
 const dotenv = require("dotenv");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 
 // Configuring the dotenv module
 dotenv.config({ path: './.env' });
@@ -32,6 +34,15 @@ app.use(express.static(publicDirectory));
 // Handling requests from the client-side JavaScript code
 // Setting the view engine to handlebars
 app.set('view engine', 'hbs');
+
+app.use(cookieParser());
+app.use(session({
+    secret: 'your_secret_key', // Change this to a random secret
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // Set secure to true if using HTTPS
+}));
+
 //define router
 app.use('/',require('./routes/pages.js'))
 app.use('/auth',require('./routes/auth.js'))
