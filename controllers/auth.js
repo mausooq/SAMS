@@ -80,9 +80,11 @@ exports.login = async (req,res) => {
                 // console.log(passwordMatch)
                 if(passwordMatch){
                // Set session variables
+               let a =db.query('SELECT * FROM STUDENT')
                 req.session.loggedin = true;
                 req.session.email = email;
-                    res.render('dashboard');
+                res.render('dashboard');
+                res.json(a)
                 }
                 else{
                     return res.render('login',{

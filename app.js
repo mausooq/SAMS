@@ -5,7 +5,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
-
+const jwt = require('jsonwebtoken');
 // Configuring the dotenv module
 dotenv.config({ path: './.env' });
 
@@ -30,19 +30,17 @@ db.connect((err) => {
 
 // Setting the public directory
 const publicDirectory =path.join(__dirname,'./public');
+app.use(express.json());
 app.use(express.static(publicDirectory));
-// Handling requests from the client-side JavaScript code
-// Setting the view engine to handlebars
-app.set('view engine', 'hbs');
-
 app.use(cookieParser());
 app.use(session({
     secret: 'your_secret_key', // Change this to a random secret
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // Set secure to true if using HTTPS
 }));
-
+// Handling requests from the client-side JavaScript code
+// Setting the view engine to handlebars
+app.set('view engine', 'hbs');
 //define router
 app.use('/',require('./routes/pages.js'))
 app.use('/auth',require('./routes/auth.js'))
