@@ -32,12 +32,7 @@ db.connect((err) => {
 const publicDirectory =path.join(__dirname,'./public');
 app.use(express.json());
 app.use(express.static(publicDirectory));
-app.use(cookieParser());
-app.use(session({
-    secret: 'your_secret_key', // Change this to a random secret
-    resave: false,
-    saveUninitialized: false,
-}));
+
 // Handling requests from the client-side JavaScript code
 // Setting the view engine to handlebars
 app.set('view engine', 'hbs');

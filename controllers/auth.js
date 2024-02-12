@@ -1,10 +1,11 @@
 // Import required modules
 const mysql = require("mysql2");
 const session = require('express-session');
-const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs');
 const { reset } = require("nodemon");
+const jwt = require('jsonwebtoken')
 
+const secert = 'mausooqSecert'
 const db = mysql.createConnection({
     host: process.env.database_host,
     user: process.env.database_user,
@@ -45,7 +46,7 @@ exports.signup = async (req,res) => {
               // If everything is fine, hash the password and insert the new user into the database
         let hasedPassword = await bcrypt.hash(password, 8);
         // console.log(hasedPassword);
-
+4
         db.query("INSERT INTO STUDENT SET ?;",{
             usn:usn,
             name:name,
@@ -79,12 +80,9 @@ exports.login = async (req,res) => {
                 const passwordMatch = await bcrypt.compare(password,dpassword);
                 // console.log(passwordMatch)
                 if(passwordMatch){
-               // Set session variables
-               let a =db.query('SELECT * FROM STUDENT')
-                req.session.loggedin = true;
-                req.session.email = email;
-                res.render('dashboard');
-                res.json(a)
+                const token = jwt.sign({email,password},secert,{ expiresIn: '1h' })
+                res.header('Authorization',`Bearer ${token}`)
+                res.redirect('/dashboard');
                 }
                 else{
                     return res.render('login',{
@@ -102,16 +100,5 @@ exports.login = async (req,res) => {
 }
 
 exports.logout = (req,res) =>{
-      // Clear session variables
-    req.session.loggedin= false;
-    req.session.email = null;
-// Redirect to login or any other page
     res.render('index')
 }
-exports.dashboard = (req, res) => {
-    if (req.session.loggedin) {
-        res.render('dashboard');
-    } else {
-        res.redirect('/'); // Redirect to login if not logged in
-    }
-};
