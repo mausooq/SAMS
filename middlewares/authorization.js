@@ -1,21 +1,22 @@
-const mysql = require("mysql2");
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
-const secert = 'mausooqSecert'
-exports.jwtAuth = (req,res,next)=>{
- const auth = req.headers.authorization;
-    if(auth){
+const secret = 'mausooqSecret';
+
+exports.jwtAuth = (req, res, next) => {
+    const auth = req.headers.authorization;
+    if (auth) {
         const token = auth.split(' ')[1];
-        jwt.verify(token,secert,(err,res)=>{
-            if(err){
-                return res.render('login',{
-                    message: "You are not logged in"
-                })
+        jwt.verify(token, secret, (err, decoded) => {
+            if (err) {
+                // Handle the error, for example, send a response indicating the error
+                return res.status(401).json({ message: 'Authentication failed' });
             }
+            // Attach decoded data to the request object
+            req.user = decoded;
             next();
-        })
+        });
+    } else {
+        // Handle the case when there is no authorization header
+        res.status(401).json({ message: 'Authorization header not provided' });
     }
-    else{
-        res.json({meessage:'authorization Failed'})
-    }
-}
+};

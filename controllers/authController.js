@@ -1,6 +1,5 @@
 // Import required modules
 const mysql = require("mysql2");
-const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const { reset } = require("nodemon");
 const jwt = require('jsonwebtoken')
@@ -54,9 +53,9 @@ exports.signup = async (req,res) => {
             email:email,
             password:hasedPassword
         },
-        () =>{
-            if(err){
-                console.log(err);
+        (error) =>{
+            if(error){
+                console.log(error);
             }
             else{
                         res.render('signup',{

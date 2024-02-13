@@ -1,7 +1,7 @@
 // Importing express, body-parser, and the authController
 const express = require('express');
 const bodyParser = require('body-parser');
-const Controller = require('../controllers/auth');
+const Controller = require('../controllers/authController');
 const authorization = require('../middlewares/authorization');
 
 // Creating an instance of express and configuring it to use body-parser
