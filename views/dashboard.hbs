@@ -1,19 +1,13 @@
-<!-- views/dashboard.hbs -->
+<!-- dashboard.handlebars -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
 </head>
 <body>
-    <h1>Welcome to the Dashboard</h1>
-    {{#if user}}
-        <p>Email: {{user.EMAIL}}</p>
-        <p>Name: {{user.NAME}}</p>
-        <!-- Add more details as needed -->
-        <p>User details not found</p>
-    {{/if}}
-    <a href="/auth/logout">Logout</a>
+  <h1>Welcome to the Dashboard, {{user.name}}!</h1>
+  <!-- Other dashboard content here -->
 </body>
 </html>
