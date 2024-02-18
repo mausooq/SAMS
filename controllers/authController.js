@@ -89,7 +89,7 @@ exports.login = async (req,res) => {
                     httpOnly: true
                 }
                 res.cookie('userSave', token, cookieOptions);
-                res.status(200).redirect("/dashboard");
+                res.status(200).redirect("/dashboard/:"+id);
                 }
                 else{
                     return res.render('login',{
@@ -105,7 +105,13 @@ exports.login = async (req,res) => {
         
     });
 }
-
-exports.logout = (req,res) =>{
-    res.render('index')
+// exports.dashboard =(req,res)=>{
+//     console.log(req.qurey.id)
+// }
+exports.logout = (req, res) => {
+    res.cookie('userSave', 'logout', {
+        expires: new Date(Date.now() + 2 * 1000),
+        httpOnly: true
+    });
+    res.status(200).redirect("/");
 }

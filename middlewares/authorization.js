@@ -22,11 +22,16 @@ exports.isLoggedIn = async (req, res, next) => {
                 // console.log(results[0]);
                 if (err) {
                     res.status(500).json({ message: 'Database error' });
-                } else {
-                    console.log(results);
-                    next();
+                } 
+                    else {
+                        if (results.length > 0) {
+                            // Attach user information to the request object
+                            req.user = results[0];
+                            next();
+                    // console.log(results);
                 }
-            });
+            }
+         });
         } catch (err) {
             res.status(403).json({ message: 'Invalid token' });
         }
