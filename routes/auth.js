@@ -9,6 +9,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded());
 
+
 router.post('/signup', Controller.signup);
 router.post('/login',Controller.login);
 router.get('/logout',Controller.logout);

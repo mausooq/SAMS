@@ -15,8 +15,8 @@ router.get('/signup',(req,res) => {
 router.get('/login',(req,res) => {
    res.render('login');
 });
-router.get('/dashboard',authorization.jwtAuth,(req,res) => {
-   res.render('dashboard');
+router.get('/dashboard',authorization.isLoggedIn,(req,res) => {
+  res.render("dashboard")
 });
 
 // Exporting the router object
