@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const { reset } = require("nodemon");
 const jwt = require('jsonwebtoken')
 
-const secert = 'mausooqSecert'
 const db = mysql.createConnection({
     host: process.env.database_host,
     user: process.env.database_user,
@@ -12,7 +11,7 @@ const db = mysql.createConnection({
     database: process.env.database
  });
  // Handle signup request
-exports.signup = async (req,res) => {
+ exports.signup =async (req,res) => {
     // console.log(req.body);
 
     // const usn = req.body.usn;
@@ -43,15 +42,15 @@ exports.signup = async (req,res) => {
             });
         }
               // If everything is fine, hash the password and insert the new user into the database
-        let hasedPassword = await bcrypt.hash(password, 8);
-        // console.log(hasedPassword);
-4
+        const hashedPassword = await bcrypt.hash(password, 10);
+       
         db.query("INSERT INTO STUDENT SET ?;",{
+            id:Date.now(),
             usn:usn,
             name:name,
             phone:phone,
             email:email,
-            password:hasedPassword
+            password:hashedPassword
         },
         (error) =>{
             if(error){
@@ -79,9 +78,18 @@ exports.login = async (req,res) => {
                 const passwordMatch = await bcrypt.compare(password,dpassword);
                 // console.log(passwordMatch)
                 if(passwordMatch){
-                const token = jwt.sign({email,password},secert,{ expiresIn: '1h' })
-                res.header('Authorization',`Bearer ${token}`)
-                res.redirect('/dashboard');
+                const id = results[0].id;
+                const token = jwt.sign({id}, process.env.JWT_SECERT
+                    ,{ expiresIn:  '90d'})
+                // console.log(token)
+                const cookieOptions = {
+                    expires: new Date(
+                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                    ),
+                    httpOnly: true
+                }
+                res.cookie('userSave', token, cookieOptions);
+                res.status(200).redirect("/dashboard");
                 }
                 else{
                     return res.render('login',{
