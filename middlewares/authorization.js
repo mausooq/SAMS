@@ -1,22 +1,38 @@
-const jwt = require('jsonwebtoken');
+const mysql = require("mysql2");
+const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 
-const secret = 'mausooqSecret';
+JWT_SECERT='nnjkhgfchj9gfhxdcghjfxcguihxfcvoiufcbhijit65e46drtfyyuihi'
+const db = mysql.createConnection({
+    host: process.env.database_host,
+    user: process.env.database_user,
+    password: process.env.database_password,
+    database: process.env.database
+});
 
-exports.jwtAuth = (req, res, next) => {
-    const auth = req.headers.authorization;
-    if (auth) {
-        const token = auth.split(' ')[1];
-        jwt.verify(token, secret, (err, decoded) => {
-            if (err) {
-                // Handle the error, for example, send a response indicating the error
-                return res.status(401).json({ message: 'Authentication failed' });
-            }
-            // Attach decoded data to the request object
-            req.user = decoded;
-            next();
-        });
+
+
+exports.isLoggedIn = async (req, res, next) => {
+    if (req.cookies.userSave) {
+        try {
+            const decoded = await promisify(jwt.verify)(req.cookies.userSave, JWT_SECERT);
+        
+            // The decoded variable is accessible here
+            db.query('SELECT * FROM STUDENT WHERE id = ?', [decoded.id], async (err, results) => {
+                // console.log(results[0]);
+                if (err) {
+                    res.status(500).json({ message: 'Database error' });
+                } else {
+                    console.log(results);
+                    next();
+                }
+            });
+        } catch (err) {
+            res.status(403).json({ message: 'Invalid token' });
+        }
     } else {
-        // Handle the case when there is no authorization header
-        res.status(401).json({ message: 'Authorization header not provided' });
+        return res.render('login',{
+           message:"login first"
+        });
     }
 };
