@@ -15,7 +15,19 @@ router.get('/signup',(req,res) => {
 router.get('/login',(req,res) => {
    res.render('login');
 });
-router.get('/dashboard/:id',authorization.isLoggedIn,(req,res) => {
+router.get('/dashboard/',authorization.isLoggedIn,(req,res) => {
+  res.render("dashboard", { userId: req.user.id })
+});
+router.get('/dashboard/marks/',authorization.isLoggedIn,(req,res) => {
+  res.render("dashboard", { userId: req.user.id })
+});
+router.get('/dashboard/project/',authorization.isLoggedIn,(req,res) => {
+  res.render("dashboard", { userId: req.user.id })
+});
+router.get('/dashboard/acheivements/',authorization.isLoggedIn,(req,res) => {
+  res.render("dashboard", { userId: req.user.id })
+});
+router.get('/dashboard/internship/',authorization.isLoggedIn,(req,res) => {
   res.render("dashboard", { userId: req.user.id })
 });
 
