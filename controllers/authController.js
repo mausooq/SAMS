@@ -89,7 +89,7 @@ exports.login = async (req,res) => {
                     httpOnly: true
                 }
                 res.cookie('userSave', token, cookieOptions);
-                res.status(200).redirect("/dashboard/:"+id);
+                res.status(200).redirect("/dashboard");
                 }
                 else{
                     return res.render('login',{
