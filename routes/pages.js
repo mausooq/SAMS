@@ -19,7 +19,7 @@ router.get('/dashboard/',authorization.isLoggedIn,(req,res) => {
   res.render("dashboard", { userId: req.user.id })
 });
 router.get('/dashboard/marks/',authorization.isLoggedIn,(req,res) => {
-  res.render("dashboard", { userId: req.user.id })
+  res.render("marks", { userId: req.user.id })
 });
 router.get('/dashboard/project/',authorization.isLoggedIn,(req,res) => {
   res.render("dashboard", { userId: req.user.id })
