@@ -3,6 +3,7 @@ const express = require("express");
 const mysql = require("mysql2");
 const path = require("path");
 const dotenv = require("dotenv");
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 // Configuring the dotenv module
 dotenv.config({ path: './.env' });
@@ -31,6 +32,7 @@ const publicDirectory =path.join(__dirname,'./public');
 app.use(express.json());
 app.use(express.static(publicDirectory));
 app.use(cookieParser());
+app.use(cors());
 // Handling requests from the client-side JavaScript code
 // Setting the view engine to handlebars
 app.set('view engine', 'hbs');

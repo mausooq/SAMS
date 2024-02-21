@@ -1,8 +1,4 @@
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+
 .dashboardCont {
   margin: 20px 20px;
   height: 80vh;
@@ -181,23 +177,7 @@ rotate: z 20deg;
   }
 }
 
-footer {
-  height: 12vh;
-  background-color: #81949c;
-  color: aliceblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 
-footer a {
-  color: #f5f5f5;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 15px;
-  padding: 5px 10px;
-}
 @media (max-width: 768px) {
   .dashboardCont {
     flex: 1;
@@ -207,7 +187,7 @@ footer a {
       minmax(100%, 1fr)
     ); /* Switch to a single column on smaller screens */
   }
-  .tooltip-container{
+  .tooltip-container {
     display: none;
   }
 }

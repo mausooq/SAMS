@@ -1,7 +1,6 @@
 // Import required modules
 const mysql = require("mysql2");
 const bcrypt = require('bcryptjs');
-const { reset } = require("nodemon");
 const jwt = require('jsonwebtoken')
 
 const db = mysql.createConnection({

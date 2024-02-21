@@ -21,8 +21,8 @@ router.get('/dashboard/',authorization.isLoggedIn,(req,res) => {
 router.get('/dashboard/marks/',authorization.isLoggedIn,(req,res) => {
   res.render("marks", { userId: req.user.id })
 });
-router.get('/dashboard/project/',authorization.isLoggedIn,(req,res) => {
-  res.render("dashboard", { userId: req.user.id })
+router.get('/dashboard/projects/',authorization.isLoggedIn,(req,res) => {
+  res.render("projects", { userId: req.user.id })
 });
 router.get('/dashboard/acheivements/',authorization.isLoggedIn,(req,res) => {
   res.render("dashboard", { userId: req.user.id })
