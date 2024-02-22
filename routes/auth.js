@@ -16,11 +16,11 @@ router.use(bodyParser.urlencoded({ extended: true }));
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       const folderName = req.user.NAME;
-      const userFolder = `images/${folderName}`
+      const userFolder = `images/imageProject/${folderName}`
       if(!fs.existsSync(userFolder)){
         fs.mkdirSync(userFolder, { recursive: true });
       }
-      cb(null, 'userFolder'); // Define the folder where images will be stored
+      cb(null, userFolder); // Define the folder where images will be stored
     },
     filename: (req, file, cb) => {
       cb(null, Date.now()+ '-' + path.extname(file.originalname)); // Generate unique filename
