@@ -28,11 +28,11 @@ router.get('/addProject',authorization.isLoggedIn,(req,res) => {
   res.render("addProject", { userId: req.user.id })
 });
 
-router.get('/dashboard/acheivements/',authorization.isLoggedIn,(req,res) => {
-  res.render("dashboard", { userId: req.user.id })
+router.get('/achievement/',authorization.isLoggedIn,(req,res) => {
+  res.render("achievements", { userId: req.user.id })
 });
-router.get('/dashboard/internship/',authorization.isLoggedIn,(req,res) => {
-  res.render("dashboard", { userId: req.user.id })
+router.get('/internship/',authorization.isLoggedIn,(req,res) => {
+  res.render("internship", { userId: req.user.id })
 });
 
 // Exporting the router object
