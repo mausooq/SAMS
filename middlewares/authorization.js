@@ -27,6 +27,7 @@ exports.isLoggedIn = async (req, res, next) => {
                         if (results.length > 0) {
                             // Attach user information to the request object
                             req.user = results[0];
+                            // console.log(req.user)
                             next();
                     // console.log(results);
                 }

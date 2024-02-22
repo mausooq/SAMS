@@ -47,7 +47,7 @@ const db = mysql.createConnection({
             id:Date.now(),
             usn:usn,
             name:name,
-            phone:phone,
+            phone:phone,    
             email:email,
             password:hashedPassword
         },

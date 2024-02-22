@@ -18,12 +18,16 @@ router.get('/login',(req,res) => {
 router.get('/dashboard/',authorization.isLoggedIn,(req,res) => {
   res.render("dashboard", { userId: req.user.id })
 });
-router.get('/dashboard/marks/',authorization.isLoggedIn,(req,res) => {
+router.get('/marks/',authorization.isLoggedIn,(req,res) => {
   res.render("marks", { userId: req.user.id })
 });
-router.get('/dashboard/projects/',authorization.isLoggedIn,(req,res) => {
+router.get('/projects/',authorization.isLoggedIn,(req,res) => {
   res.render("projects", { userId: req.user.id })
 });
+router.get('/addProject',authorization.isLoggedIn,(req,res) => {
+  res.render("addProject", { userId: req.user.id })
+});
+
 router.get('/dashboard/acheivements/',authorization.isLoggedIn,(req,res) => {
   res.render("dashboard", { userId: req.user.id })
 });
