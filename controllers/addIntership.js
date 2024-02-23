@@ -12,7 +12,7 @@ const db = mysql.createConnection({
     const{ title,date,location,description} = req.body;
     const imagePath = req.file ? req.file.path : null;
   
-      db.query('INSERT INTO INTERSHIP SET ?;',{
+      db.query('INSERT INTO INTERNSHIP SET ?;',{
           id:req.user.id,
           iid:(Date.now())/4,
           image_path:imagePath, 
@@ -20,7 +20,7 @@ const db = mysql.createConnection({
           date:date,
           location:location,
           description:description
-      },
+      }, 
       (err) =>{
         if(err){
           console.log(err);
