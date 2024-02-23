@@ -21,6 +21,7 @@
             <li><a href="/internship">INTERNSHIP</a></li>
         </ul>
     </nav>
+
     <div class="projectCont">
         <div class="createBtn">
             <button onclick="location.href='/addProject'">
@@ -37,6 +38,20 @@
         <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
         <a href="/auth/logout">Logout</a>
     </footer>
+    <script>
+        // Make a simple GET request using fetch
+        fetch('/auth/project')
+            .then(response = response.json())
+            .then(data =>{
+                const projects = data.projects;
+                const projectCont = document.getElementById('projectCont')
+                const ProjectCard = document.createElement("project-card")
+                
+            })
+
+
+
+    </script>
 </body>
 
 </html>

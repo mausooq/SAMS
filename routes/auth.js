@@ -5,7 +5,8 @@ const multer  = require('multer')
 const path = require('path')
 const fs = require('fs')
 const Controller = require('../controllers/authController');
-const Project = require('../controllers/addProject')
+const Project = require('../controllers/project')
+const addProject = require('../controllers/addProject')
 const Achievement = require('../controllers/addAchievement')
 const Internship = require('../controllers/addIntership')
 const authorization = require('../middlewares/authorization');
@@ -35,7 +36,8 @@ router.post('/signup', Controller.signup);
 router.post('/login',Controller.login);
 router.get('/logout',Controller.logout);
 
-router.post('/addProject',authorization.isLoggedIn,upload.single('projectImage'),Project.uploadProject);
+router.get('/project',authorization.isLoggedIn,Project.displayProject);
+router.post('/addProject',authorization.isLoggedIn,upload.single('projectImage'),addProject.uploadProject);
 router.post('/addAchievement',authorization.isLoggedIn,upload.single('achievementImage'),Achievement.uploadAchievement);
 router.post('/addInternship',authorization.isLoggedIn,upload.single('internshipImage'),Internship.uploadIntership);
 
