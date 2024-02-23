@@ -6,6 +6,8 @@ const path = require('path')
 const fs = require('fs')
 const Controller = require('../controllers/authController');
 const Project = require('../controllers/addProject')
+const Achievement = require('../controllers/addAchievement')
+const Internship = require('../controllers/addIntership')
 const authorization = require('../middlewares/authorization');
 // Creating an instance of express and configuring it to use body-parser
 const router = express.Router();
@@ -16,7 +18,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       const folderName = req.user.NAME;
-      const userFolder = `images/imageProject/${folderName}`
+      const userFolder = `images/${folderName}`
       if(!fs.existsSync(userFolder)){
         fs.mkdirSync(userFolder, { recursive: true });
       }
@@ -34,6 +36,8 @@ router.post('/login',Controller.login);
 router.get('/logout',Controller.logout);
 
 router.post('/addProject',authorization.isLoggedIn,upload.single('projectImage'),Project.uploadProject);
+router.post('/addAchievement',authorization.isLoggedIn,upload.single('achievementImage'),Achievement.uploadAchievement);
+router.post('/addInternship',authorization.isLoggedIn,upload.single('internshipImage'),Internship.uploadIntership);
 
 
 

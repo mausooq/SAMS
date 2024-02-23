@@ -31,8 +31,14 @@ router.get('/addProject',authorization.isLoggedIn,(req,res) => {
 router.get('/achievement/',authorization.isLoggedIn,(req,res) => {
   res.render("achievements", { userId: req.user.id })
 });
+router.get('/addAchievement',authorization.isLoggedIn,(req,res) => {
+  res.render("addAchievements", { userId: req.user.id })
+});
 router.get('/internship/',authorization.isLoggedIn,(req,res) => {
   res.render("internship", { userId: req.user.id })
+});
+router.get('/addInternship',authorization.isLoggedIn,(req,res) => {
+  res.render("addInternship", { userId: req.user.id })
 });
 
 // Exporting the router object
