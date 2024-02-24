@@ -41,16 +41,42 @@
     <script>
         // Make a simple GET request using fetch
         fetch('/auth/project')
-            .then(response = response.json())
-            .then(data =>{
+            .then(response => response.json())
+            .then(data => {
                 const projects = data.projects;
                 const projectCont = document.getElementById('projectCont')
-                const ProjectCard = document.createElement("project-card")
-                
+                projects.forEach(project => {
+                    const projectCard = document.createElement("div")
+                    projectCard.classList.add("Project-card")
+
+                    const imageElement = document.createElement("img")
+                    imageElement.src = project.image_path;
+                    imageElement.alt = project.title;
+
+                    const projectTitle = document.createElement("P")
+                    projectTitle.textContent = project.title;
+
+                    const projectDate = document.createElement("p")
+                    projectDate.textContent = project.date;
+
+                    const projectLocation = document.createElement("p")
+                    projectLocation = project.location;
+
+                    const projectDescription = document.createElement("p")
+                    projectDescription = project.description;
+
+                    projectCard.appendChild(imageElement);
+                    projectCard.appendChild(projectTitle);
+                    projectCard.appendChild(projectDate);
+                    projectCard.appendChild(projectLocation);
+                    projectCard.appendChild(projectDescription);
+
+                    projectCont.appendChild(projectCard);
+
+                })
+            }).catch(err => {
+                console.log(err)
             })
-
-
-
     </script>
 </body>
 

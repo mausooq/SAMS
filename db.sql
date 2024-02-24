@@ -8,11 +8,34 @@ CREATE TABLE STUDENT (
 );
 CREATE TABLE PROJECT (
     pid BIGINT PRIMARY KEY,
-    sid BIGINT,
-    FOREIGN KEY (sid) REFERENCES STUDENT(sid),
+    id BIGINT,
+    FOREIGN KEY (id) REFERENCES STUDENT(id),
     image_path VARCHAR(255),
     title VARCHAR(50) NOT NULL,
     date VARCHAR(20) NOT NULL,
     location VARCHAR(100) NOT NULL,
     description varchar(10000) NOT NULL
 );
+CREATE TABLE ACHIEVEMENT (
+    aid BIGINT PRIMARY KEY,
+    id BIGINT,
+    FOREIGN KEY (id) REFERENCES STUDENT(id),
+    image_path VARCHAR(255),
+    title VARCHAR(50) NOT NULL,
+    date VARCHAR(20) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    description varchar(10000) NOT NULL
+);
+CREATE TABLE INTERNSHIP (
+    iid BIGINT PRIMARY KEY,
+    id BIGINT,
+    FOREIGN KEY (id) REFERENCES STUDENT(id),
+    image_path VARCHAR(255),
+    title VARCHAR(50) NOT NULL,
+    date VARCHAR(20) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    description varchar(10000) NOT NULL
+);
+
+
+
