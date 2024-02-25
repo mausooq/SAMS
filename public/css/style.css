@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin: 0;
   font-family: "EB Garamond", serif;
 }
 nav {
@@ -67,15 +68,16 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 10px;
 }
 
 .createBtn {
-  position: absolute;
-  top: 85%;
+  position: relative;
   left: 88%;
 }
 
 button {
+  margin-bottom: 10px;
   border: 2px solid #24b4fb;
   background-color: #24b4fb;
   border-radius: 0.9em;
@@ -97,8 +99,7 @@ button:hover {
 }
 @media (max-width: 768px) {
   .createBtn {
-    position: absolute;
-    top: 85%;
+    position: relative;
     left: 71%;
   }
 }

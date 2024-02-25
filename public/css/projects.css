@@ -4,3 +4,16 @@
   width: auto;
 }
 
+.projectCont {
+  flex: 1;
+  position: relative; /* Make the container relative */
+}
+.Project-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+}
+.Project-card img {
+  width: 100%; /* Set the width to 100% of the container */
+  height: auto; /* Maintain aspect ratio */
+}

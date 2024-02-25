@@ -1,5 +1,4 @@
 const mysql = require('mysql2')
-
 const db = mysql.createConnection({
     host: process.env.database_host,
     user: process.env.database_user,
@@ -12,7 +11,7 @@ exports.displayProject = (req,res) =>{
         if(err){
             console.log(err)
         }
-        const projects = results.map(project=>({
+        const projects = results.map(project => ({
             image_path:project.image_path,
             title : project.title,
             date : project.date,

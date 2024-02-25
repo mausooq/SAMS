@@ -33,13 +33,14 @@ app.use(express.json());
 app.use(express.static(publicDirectory));
 app.use(cookieParser());
 app.use(cors());
-app.use(express.static('images'));
+app.use('/images', express.static('images'));
 // Handling requests from the client-side JavaScript code
 // Setting the view engine to handlebars
 app.set('view engine', 'hbs');
 //define router
 app.use('/',require('./routes/pages.js'))
 app.use('/auth',require('./routes/auth.js'))
+
 // Starting the server
 app.listen(5000, () => {
    console.log("servr start on 5000");

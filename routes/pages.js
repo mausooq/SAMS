@@ -24,6 +24,7 @@ router.get('/marks/',authorization.isLoggedIn,(req,res) => {
 router.get('/projects/',authorization.isLoggedIn,(req,res) => {
   res.render("projects", { userId: req.user.id })
 });
+
 router.get('/addProject',authorization.isLoggedIn,(req,res) => {
   res.render("addProject", { userId: req.user.id })
 });

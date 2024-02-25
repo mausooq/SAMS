@@ -14,7 +14,7 @@ const authorization = require('../middlewares/authorization');
 const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
-
+router.use(express.static('images'));
 // Configure multer for handling file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
