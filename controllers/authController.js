@@ -79,7 +79,7 @@ exports.login = async (req,res) => {
                 if(passwordMatch){
                 const id = results[0].id;
                 const token = jwt.sign({id}, process.env.JWT_SECERT
-                    ,{ expiresIn:  '1h'})
+                    ,{ expiresIn:  '90d'})
                 // console.log(token)
                 const cookieOptions = {
                     expires: new Date(
