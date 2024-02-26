@@ -1,19 +1,37 @@
 .projectCont {
   margin: 20px 20px;
-  height: 80vh;
   width: auto;
-}
-
-.projectCont {
   flex: 1;
-  position: relative; /* Make the container relative */
+  position: relative; 
 }
 .Project-card {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin: 10px;
+  box-sizing: border-box;
+  width: 300px;
+  height: 304px;
+  background: rgba(217, 217, 217, 0.58);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+}
+.Project-card:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+.Project-card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
 }
 .Project-card img {
-  width: 100%; /* Set the width to 100% of the container */
-  height: auto; /* Maintain aspect ratio */
+  width: 150px;
+  height: 150px; 
 }

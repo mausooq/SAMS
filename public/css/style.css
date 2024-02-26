@@ -72,8 +72,7 @@ footer {
 }
 
 .createBtn {
-  position: relative;
-  left: 88%;
+  margin-left: 90vw;
 }
 
 button {
@@ -99,8 +98,7 @@ button:hover {
 }
 @media (max-width: 768px) {
   .createBtn {
-    position: relative;
-    left: 71%;
+    margin-left: 70vw;
   }
 }
 footer a {
