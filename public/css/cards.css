@@ -1,5 +1,4 @@
-.projectCont {
-  margin: 20px 20px;
+.container {
   width: auto;
   flex: 1;
   position: relative;
@@ -8,7 +7,7 @@
   align-items: center;
   flex-direction: column;
 }
-.Project-card {
+.container-card {
   margin-top: 2vh;
   padding: 20px;
   width: 80vw;
@@ -25,7 +24,7 @@
   overflow: hidden;
 }
 
-.Project-card img {
+.container-card img {
   max-width: 100%;
   max-height: 100%;
 }

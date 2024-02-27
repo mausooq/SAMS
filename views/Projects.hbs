@@ -9,8 +9,8 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/projects.css">
-    
+    <link rel="stylesheet" href="/css/cards.css">
+
 </head>
 
 <body>
@@ -20,12 +20,12 @@
             <li><a href="/marks">MARKS</a></li>
             <li><a href="/projects">PROJECTS</a></li>
             <li><a href="/achievement">ACHIEVEMENTS</a></li>
-           
+
         </ul>
     </nav>
-    
-    <div class="projectCont " id="projectCont">
-        
+
+    <div class="container " id="container">
+
     </div>
     <div class="createBtn">
         <button onclick="location.href='/addProject'">
@@ -47,17 +47,17 @@
             .then(response => response.json())
             .then(data => {
                 const projects = data.projects;
-                const projectCont = document.getElementById('projectCont')
+                const projectCont = document.getElementById('container')
                 projects.forEach(project => {
                     const projectCard = document.createElement("div")
-                    projectCard.classList.add("Project-card")
+                    projectCard.classList.add("container-card")
+
+                    const projectTitle = document.createElement("h1")
+                    projectTitle.textContent = project.title;
 
                     const imageElement = document.createElement("img")
                     imageElement.src = project.image_path;
                     imageElement.alt = project.title;
-
-                    const projectTitle = document.createElement("P")
-                    projectTitle.textContent = project.title;
 
                     const projectDate = document.createElement("p")
                     projectDate.textContent = project.date;
@@ -68,8 +68,8 @@
                     const projectDescription = document.createElement("p");
                     projectDescription.textContent = project.description;
 
-                    projectCard.appendChild(imageElement);
                     projectCard.appendChild(projectTitle);
+                    projectCard.appendChild(imageElement);
                     projectCard.appendChild(projectDate);
                     projectCard.appendChild(projectLocation);
                     projectCard.appendChild(projectDescription);
