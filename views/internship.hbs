@@ -33,6 +33,41 @@
             </button>
         </div>
     </div>
+    <script>
+        fetch("/auth/internship")
+            .then(response => response.json())
+            .then(data => {
+                const  internships = data.internships;
+                const internshipCont = document.getElementById("container")
+                internships.forEach(internship =>{
+                    const internshipCard = document.createElement("div")
+                     internshipCard.classList.add("container-card")
+                      const internshipTitle = document.createElement("h1")
+                    internshipTitle.textContent = internship.title;
+
+                    const imageElement = document.createElement("img")
+                    imageElement.src = internship.image_path;
+                    imageElement.alt = internship.title;
+
+                    const internshipDate = document.createElement("p")
+                    internshipDate.textContent = internship.date;
+
+                    const internshipLocation = document.createElement("p");
+                    internshipLocation.textContent = internship.location;
+
+                    const internshipDescription = document.createElement("p");
+                    internshipDescription.textContent = internship.description;
+
+                    internshipCard.appendChild(internshipTitle);
+                    internshipCard.appendChild(imageElement);
+                    internshipCard.appendChild(internshipDate);
+                    internshipCard.appendChild(internshipLocation);
+                    internshipCard.appendChild(internshipDescription);
+
+                    internshipCont.appendChild(internshipCard);
+                })
+            })
+    </script>
     <footer>
         <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
         <a href="/auth/logout">Logout</a>

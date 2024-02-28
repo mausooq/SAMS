@@ -9,7 +9,8 @@ const Project = require('../controllers/project')
 const addProject = require('../controllers/addProject')
 const addAchievement = require('../controllers/addAchievement')
 const Achievement = require('../controllers/achievement')
-const Internship = require('../controllers/addIntership')
+const addInternship = require('../controllers/addIntership')
+const Internship = require('../controllers/internship')
 const authorization = require('../middlewares/authorization');
 // Creating an instance of express and configuring it to use body-parser
 const router = express.Router();
@@ -38,10 +39,11 @@ router.post('/login',Controller.login);
 router.get('/logout',Controller.logout);
 
 router.get('/project',authorization.isLoggedIn,Project.displayProject);
-router.get('/achievements',authorization.isLoggedIn,Achievement.displayAchievements)
 router.post('/addProject',authorization.isLoggedIn,upload.single('projectImage'),addProject.uploadProject);
+router.get('/achievements',authorization.isLoggedIn,Achievement.displayAchievements)
 router.post('/addAchievement',authorization.isLoggedIn,upload.single('achievementImage'),addAchievement.uploadAchievement);
-router.post('/addInternship',authorization.isLoggedIn,upload.single('internshipImage'),Internship.uploadIntership);
+router.get('/internship',authorization.isLoggedIn,Internship.displayInternship)
+router.post('/addInternship',authorization.isLoggedIn,upload.single('internshipImage'),addInternship.uploadIntership);
 
 
 

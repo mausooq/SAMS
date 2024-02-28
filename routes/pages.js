@@ -41,8 +41,11 @@ router.get('/internship/',authorization.isLoggedIn,(req,res) => {
 router.get('/addInternship',authorization.isLoggedIn,(req,res) => {
   res.render("addInternship", { userId: req.user.id })
 });
-router.get('/SEM1',authorization.isLoggedIn,(req,res) => {
-  res.render("sem1", { userId: req.user.id })
+router.get('/sgpa',authorization.isLoggedIn,(req,res) => {
+  res.render("sgpa", { userId: req.user.id })
+});
+router.get('/cgpa',authorization.isLoggedIn,(req,res) => {
+  res.render("cgpa", { userId: req.user.id })
 });
 
 // Exporting the router object
