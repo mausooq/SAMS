@@ -21,7 +21,7 @@
             <li><a href="/internship">INTERNSHIP</a></li>
         </ul>
     </nav>
-    <div class="container">
+    <div class="container" id="container">
         <div class="createBtn">
             <button onclick="location.href='/addInternship'">
                 <span>
@@ -34,15 +34,18 @@
         </div>
     </div>
     <script>
-        fetch("/auth/internship")
+        // Make a simple GET request using fetch
+        fetch('/auth/internship')
             .then(response => response.json())
             .then(data => {
-                const  internships = data.internships;
-                const internshipCont = document.getElementById("container")
-                internships.forEach(internship =>{
+                const internships = data.internships;
+                const internshipCont = document.getElementById('container')
+                internships.forEach(internship => {
+                    console.log(internship)
                     const internshipCard = document.createElement("div")
-                     internshipCard.classList.add("container-card")
-                      const internshipTitle = document.createElement("h1")
+                    internshipCard.classList.add("container-card")
+
+                    const internshipTitle = document.createElement("h1")
                     internshipTitle.textContent = internship.title;
 
                     const imageElement = document.createElement("img")
@@ -65,7 +68,10 @@
                     internshipCard.appendChild(internshipDescription);
 
                     internshipCont.appendChild(internshipCard);
+
                 })
+            }).catch(err => {
+                console.log(err)
             })
     </script>
     <footer>

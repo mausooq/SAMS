@@ -34,6 +34,7 @@ app.use(express.static(publicDirectory));
 app.use(cookieParser());
 app.use(cors());
 app.use('/images', express.static('images'));
+app.use('/assets', express.static('assets'));
 // Handling requests from the client-side JavaScript code
 // Setting the view engine to handlebars
 app.set('view engine', 'hbs');

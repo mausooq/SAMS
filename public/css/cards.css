@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 .container-card {
-  margin-top: 2vh;
+  margin: 2vh 0px;
   padding: 20px;
   width: 80vw;
   min-height: 30vh;
