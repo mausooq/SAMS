@@ -35,11 +35,17 @@ router.get('/achievement/',authorization.isLoggedIn,(req,res) => {
 router.get('/addAchievement',authorization.isLoggedIn,(req,res) => {
   res.render("addAchievements", { userId: req.user.id })
 });
-router.get('/internship/',authorization.isLoggedIn,(req,res) => {
+router.get('/internship',authorization.isLoggedIn,(req,res) => {
   res.render("internship", { userId: req.user.id })
 });
 router.get('/addInternship',authorization.isLoggedIn,(req,res) => {
   res.render("addInternship", { userId: req.user.id })
+});
+router.get('/awards',authorization.isLoggedIn,(req,res) => {
+  res.render("awards", { userId: req.user.id })
+});
+router.get('/addAwards',authorization.isLoggedIn,(req,res) => {
+  res.render("addAwards", { userId: req.user.id })
 });
 router.get('/sgpa',authorization.isLoggedIn,(req,res) => {
   res.render("sgpa", { userId: req.user.id })

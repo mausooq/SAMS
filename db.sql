@@ -36,6 +36,17 @@ CREATE TABLE INTERNSHIP (
     location VARCHAR(100) NOT NULL,
     description varchar(10000) NOT NULL
 );
+CREATE TABLE AWARD (
+    aid BIGINT PRIMARY KEY,
+    id BIGINT,
+    FOREIGN KEY (id) REFERENCES STUDENT(id),
+    image_path VARCHAR(255),
+    title VARCHAR(50) NOT NULL,
+    date VARCHAR(20) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    description varchar(10000) NOT NULL
+);
+
 
 
 

@@ -43,38 +43,38 @@
     </footer>
     <script>
         // Make a simple GET request using fetch
-        fetch('/auth/project')
+        fetch('/auth/award')
             .then(response => response.json())
             .then(data => {
-                const projects = data.projects;
-                const projectCont = document.getElementById('container')
-                projects.forEach(project => {
-                    const projectCard = document.createElement("div")
-                    projectCard.classList.add("container-card")
+                const awards = data.awards;
+                const awardCont = document.getElementById('container')
+                awards.forEach(award => {
+                    const awardCard = document.createElement("div")
+                    awardCard.classList.add("container-card")
 
-                    const projectTitle = document.createElement("h1")
-                    projectTitle.textContent = project.title;
+                    const awardTitle = document.createElement("h1")
+                    awardTitle.textContent = award.title;
 
                     const imageElement = document.createElement("img")
-                    imageElement.src = project.image_path;
-                    imageElement.alt = project.title;
+                    imageElement.src = award.image_path;
+                    imageElement.alt = award.title;
 
-                    const projectDate = document.createElement("p")
-                    projectDate.textContent = project.date;
+                    const awardDate = document.createElement("p")
+                    awardDate.textContent = award.date;
 
-                    const projectLocation = document.createElement("p");
-                    projectLocation.textContent = project.location;
+                    const awardLocation = document.createElement("p");
+                    awardLocation.textContent = award.location;
 
-                    const projectDescription = document.createElement("p");
-                    projectDescription.textContent = project.description;
+                    const awardDescription = document.createElement("p");
+                    awardDescription.textContent = award.description;
 
-                    projectCard.appendChild(projectTitle);
-                    projectCard.appendChild(imageElement);
-                    projectCard.appendChild(projectDate);
-                    projectCard.appendChild(projectLocation);
-                    projectCard.appendChild(projectDescription);
+                    awardCard.appendChild(awardTitle);
+                    awardCard.appendChild(imageElement);
+                    awardCard.appendChild(awardDate);
+                    awardCard.appendChild(awardLocation);
+                    awardCard.appendChild(awardDescription);
 
-                    projectCont.appendChild(projectCard);
+                    awardCont.appendChild(awardCard);
 
                 })
             }).catch(err => {
