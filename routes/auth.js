@@ -11,8 +11,8 @@ const addAchievement = require('../controllers/addAchievement')
 const Achievement = require('../controllers/achievement')
 const addInternship = require('../controllers/addIntership')
 const Internship = require('../controllers/internship')
-const addAwards = require('../controllers/addAwards')
-const Awards = require('../controllers/awards')
+const addAwards = require('../controllers/addAward')
+const Awards = require('../controllers/award')
 const authorization = require('../middlewares/authorization');
 // Creating an instance of express and configuring it to use body-parser
 const router = express.Router();
