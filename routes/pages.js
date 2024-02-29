@@ -47,6 +47,12 @@ router.get('/awards',authorization.isLoggedIn,(req,res) => {
 router.get('/addAwards',authorization.isLoggedIn,(req,res) => {
   res.render("addAwards", { userId: req.user.id })
 });
+router.get('/EXTRA_CURRICULAR_ACTIVITIES',authorization.isLoggedIn,(req,res) => {
+  res.render("eca", { userId: req.user.id })
+});
+router.get('/addeca',authorization.isLoggedIn,(req,res) => {
+  res.render("addEca", { userId: req.user.id })
+});
 router.get('/sgpa',authorization.isLoggedIn,(req,res) => {
   res.render("sgpa", { userId: req.user.id })
 });

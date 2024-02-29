@@ -8,13 +8,13 @@ const db = mysql.createConnection({
     database: process.env.database
  });
 
- exports.uploadAward= async(req,res)=>{
+ exports.uploadEca= async(req,res)=>{
     const{ title,date,location,description} = req.body;
     const imagePath = req.file ? req.file.path : null;
   
-      db.query('INSERT INTO Award SET ?;',{
+      db.query('INSERT INTO eca SET ?;',{
           id:req.user.id,
-          awid:(Date.now())/5,
+          eid:(Date.now())/6,
           image_path:imagePath, 
           title:title,
           date:date,
@@ -26,8 +26,8 @@ const db = mysql.createConnection({
           console.log(err);
         }
         else{
-          res.render('addAwards',{
-            msg: "Your Award has been added!",
+          res.render('addE1ca',{
+            msg: "Your eca has been added!",
           })
         }
       }
