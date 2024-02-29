@@ -21,7 +21,7 @@
             <li><a href="/internship">INTERNSHIP</a></li>
         </ul>
     </nav>
-    <div class="projectForm">
+    <div class="Form">
 
         <div class="container mt-5">
             {{#if msg}}
@@ -29,11 +29,11 @@
             {{/if}}
             <div class="card">
                 <div class="card-header">
-                    ADD PROJECT
+                    ADD EXTRA CURRICULAR ACTIVITIES
                 </div>
                 <div class="card-body">
-                    <form action="/auth/addProject" method="post" enctype="multipart/form-data">
-                        <label class="custum-file-upload" for="projectImage">
+                    <form action="/auth/addEca" method="post" enctype="multipart/form-data">
+                        <label class="custum-file-upload" for="ecaImage">
                             <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24">
                                     <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
@@ -46,9 +46,9 @@
                                 </svg>
                             </div>
                             <div class="text">
-                                <span>Click to Project image</span>
+                                <span>Click to Certification image</span>
                             </div>
-                            <input type="file" id="projectImage" name="projectImage" accept=".png,.jpg,.jpeg"
+                            <input type="file" id="ecaImage" name="ecaImage" accept=".png,.jpg,.jpeg"
                                 required />
                         </label>
 

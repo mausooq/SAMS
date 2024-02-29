@@ -51,7 +51,7 @@ router.post('/addInternship',authorization.isLoggedIn,upload.single('internshipI
 router.get('/award',authorization.isLoggedIn,Awards.displayAward)
 router.post('/addAward',authorization.isLoggedIn,upload.single('awardsImage'),addAwards.uploadAward);
 // router.get('/eca',authorization.isLoggedIn,Eca.displaydEca)
-router.post('/addEca',authorization.isLoggedIn,upload.single('awardsImage'),addEca.uploadEca);
+router.post('/addEca',authorization.isLoggedIn,upload.single('ecaImage'),addEca.uploadEca);
 
 
 

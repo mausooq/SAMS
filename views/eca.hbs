@@ -4,81 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAMS:MARKS</title>
+    <title>SAMS:Extra Curricular Activities</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/cards.css" />
-    <style>
-        .title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .title h1 {
-            font-weight: 600;
-            color: #344955;
-        }
-
-        .title span {
-            color: #365486;
-        }
-
-        .title p {
-            color: #365486;
-            font-weight: 600;
-        }
-
-        /* === removing default button style ===*/
-        .button1 {
-            margin: 0;
-            height: auto;
-            background: transparent;
-            padding: 0;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* button styling */
-        .button1 {
-            --border-right: 6px;
-            --text-stroke-color: rgba(255, 255, 255, 0.6);
-            --animation-color: #37FF8B;
-            --fs-size: 2em;
-            letter-spacing: 3px;
-            text-decoration: none;
-            font-size: var(--fs-size);
-            font-family: "Arial";
-            position: relative;
-            text-transform: uppercase;
-            color: transparent;
-            -webkit-text-stroke: 1px var(--text-stroke-color);
-        }
-
-        /* this is the text, when you hover on button */
-        .hover-text {
-            position: absolute;
-            box-sizing: border-box;
-            content: attr(data-text);
-            color: var(--animation-color);
-            width: 0%;
-            inset: 0;
-            border-right: var(--border-right) solid var(--animation-color);
-            overflow: hidden;
-            transition: 0.5s;
-            -webkit-text-stroke: 1px var(--animation-color);
-        }
-
-        /* hover */
-        .button1:hover .hover-text {
-            width: 100%;
-            filter: drop-shadow(0 0 23px var(--animation-color))
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/cards.css">
 
 </head>
 
@@ -89,29 +20,67 @@
             <li><a href="/marks">MARKS</a></li>
             <li><a href="/projects">PROJECTS</a></li>
             <li><a href="/achievement">ACHIEVEMENTS</a></li>
-            <li><a href="/internship">INTERNSHIP</a></li>
+
         </ul>
     </nav>
-    <div class="container">
-        <div class="title">
-            <h1>VTU <span>SGPA</span> AND <span>CGPA</span> <br>CALCULATOR</h1>
-            <p>Calculate your SGPA and CGPA here!</p>
-        </div>
-        <div class="btnMarks">
-            <button class="button1" data-text="Awesome" onclick="location.href='/sgpa'">
-                <span class="actual-text">&nbsp;SGPA&nbsp;</span>
-                <span aria-hidden="true" class="hover-text">&nbsp;SGPA&nbsp;</span>
-            </button>
-            <button class="button1" data-text="Awesome" onclick="location.href='/cgpa'">
-                <span class="actual-text">&nbsp;CGPA&nbsp;</span>
-                <span aria-hidden="true" class="hover-text">&nbsp;CGPA&nbsp;</span>
-            </button>
-        </div>
+
+    <div class="container " id="container">
+
+    </div>
+    <div class="createBtn">
+        <button onclick="location.href='/addEca'">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+                </svg> Create
+            </span>
+        </button>
     </div>
     <footer>
         <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
         <a href="/auth/logout">Logout</a>
     </footer>
+    <script>
+        // Make a simple GET request using fetch
+        fetch('/auth/eca')
+            .then(response => response.json())
+            .then(data => {
+                const ecas = data.ecas;
+                const ecaCont = document.getElementById('container')
+                ecas.forEach(eca => {
+                    const ecaCard = document.createElement("div")
+                    ecaCard.classList.add("container-card")
+
+                    const ecaTitle = document.createElement("h1")
+                    ecaTitle.textContent = eca.title;
+
+                    const imageElement = document.createElement("img")
+                    imageElement.src = eca.image_path;
+                    imageElement.alt = eca.title;
+
+                    const ecaDate = document.createElement("p")
+                    ecaDate.textContent = eca.date;
+
+                    const ecaLocation = document.createElement("p");
+                    ecaLocation.textContent = eca.location;
+
+                    const ecaDescription = document.createElement("p");
+                    ecaDescription.textContent = eca.description;
+
+                    ecaCard.appendChild(ecaTitle);
+                    ecaCard.appendChild(imageElement);
+                    ecaCard.appendChild(ecaDate);
+                    ecaCard.appendChild(ecaLocation);
+                    ecaCard.appendChild(ecaDescription);
+
+                    ecaCont.appendChild(ecaCard);
+
+                })
+            }).catch(err => {
+                console.log(err)
+            })
+    </script>
 </body>
 
 </html>

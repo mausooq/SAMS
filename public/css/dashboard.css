@@ -20,6 +20,8 @@
   border: 2px solid #c3c6ce;
   transition: 0.5s ease-out;
   overflow: visible;
+  cursor: pointer;
+  user-select: none;
 }
 
 .card-details {
