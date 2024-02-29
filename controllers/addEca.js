@@ -26,7 +26,7 @@ const db = mysql.createConnection({
           console.log(err);
         }
         else{
-          res.render('addE1ca',{
+          res.render('addEca',{
             msg: "Your eca has been added!",
           })
         }
