@@ -41,7 +41,6 @@ app.set('view engine', 'hbs');
 //define router
 app.use('/',require('./routes/pages.js'))
 app.use('/auth',require('./routes/auth.js'))
-
 // Starting the server
 app.listen(5000, () => {
    console.log("servr start on 5000");
