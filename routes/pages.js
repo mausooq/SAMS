@@ -53,6 +53,9 @@ router.get('/EXTRA_CURRICULAR_ACTIVITIES',authorization.isLoggedIn,(req,res) => 
 router.get('/addEca',authorization.isLoggedIn,(req,res) => {
   res.render("addEca", { userId: req.user.id })
 });
+router.get('/profile',authorization.isLoggedIn,(req,res) => {
+  res.render("profile", { userId: req.user.id })
+});
 router.get('/sgpa',authorization.isLoggedIn,(req,res) => {
   res.render("sgpa", { userId: req.user.id })
 });
