@@ -48,6 +48,7 @@ nav ul {
 }
 nav li {
   list-style: none;
+  cursor: pointer;
 }
 nav li a {
   color: #365486;

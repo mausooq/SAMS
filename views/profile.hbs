@@ -7,28 +7,135 @@
     <title>SAMS:Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/cards.css">
+    <style>
+        .student-profile .card {
+            border-radius: 10px;
+        }
+
+        .student-profile .card .card-header .profile_img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 10px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .student-profile .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .student-profile .card p {
+            font-size: 16px;
+            color: #000;
+        }
+
+        .student-profile .table th,
+        .student-profile .table td {
+            font-size: 14px;
+            padding: 5px 10px;
+            color: #000;
+        }
+    </style>
+
 </head>
 
 <body>
     <nav>
         <h3><a href="/dashboard">SAMS</a></h3>
-        <ul>
-            <li><img src="../assets/profile-user.png" alt=""></li>
-
-        </ul>
     </nav>
 
     <div class="container " id="container">
-
+        <div class="student-profile py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-transparent text-center">
+                                <img class="profile_img"
+                                    src="https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg"
+                                    alt="student dp">
+                                <h3>{{userName}}</h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0"><strong class="pr-1">Student ID:</strong>321000001</p>
+                                <p class="mb-0"><strong class="pr-1">Class:</strong>4</p>
+                                <p class="mb-0"><strong class="pr-1">Section:</strong>A</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-transparent border-0">
+                                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th width="30%">Roll</th>
+                                        <td width="2%">:</td>
+                                        <td>125</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">Academic Year </th>
+                                        <td width="2%">:</td>
+                                        <td>2020</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">Gender</th>
+                                        <td width="2%">:</td>
+                                        <td>Male</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">Religion</th>
+                                        <td width="2%">:</td>
+                                        <td>Group</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">blood</th>
+                                        <td width="2%">:</td>
+                                        <td>B+</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="height: 26px"></div>
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-transparent border-0">
+                                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Other Information</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
         <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
         <a href="/auth/logout">Logout</a>
     </footer>
+
+    <script>
+
+
+    </script>
 </body>
 
 </html>

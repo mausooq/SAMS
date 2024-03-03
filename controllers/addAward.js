@@ -14,7 +14,7 @@ const db = mysql.createConnection({
   
       db.query('INSERT INTO Award SET ?;',{
           id:req.user.id,
-          awid:(Date.now())/5,
+          aid:(Date.now())/5,
           image_path:imagePath, 
           title:title,
           date:date,

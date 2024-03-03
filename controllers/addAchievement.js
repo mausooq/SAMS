@@ -14,7 +14,7 @@ const db = mysql.createConnection({
   
       db.query('INSERT INTO ACHIEVEMENT SET ?;',{
           id:req.user.id,
-          aid:(Date.now())/3,
+          awid:(Date.now())/3,
           image_path:imagePath, 
           title:title,
           date:date,

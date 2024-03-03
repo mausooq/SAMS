@@ -60,7 +60,7 @@ router.get('/sgpa',authorization.isLoggedIn,(req,res) => {
   res.render("sgpa", { userId: req.user.id })
 });
 router.get('/cgpa',authorization.isLoggedIn,(req,res) => {
-  res.render("cgpa", { userId: req.user.id })
+  res.render("cgpa", { userId: req.user.id})
 });
 
 // Exporting the router object
