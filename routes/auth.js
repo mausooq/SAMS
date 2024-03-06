@@ -15,7 +15,7 @@ const addAwards = require('../controllers/addAward')
 const Awards = require('../controllers/award')
 const addEca = require('../controllers/addEca')
 const Eca = require('../controllers/eca')
-const profile = require('../controllers/profile')
+const Profile = require('../controllers/profile')
 const authorization = require('../middlewares/authorization');
 // Creating an instance of express and configuring it to use body-parser
 const router = express.Router();

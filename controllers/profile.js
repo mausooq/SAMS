@@ -5,19 +5,20 @@ const db = mysql.createConnection({
     password: process.env.database_password,
     database: process.env.database
  });
- exports.displayProject = (req,res) =>{
+ exports.displayProfile = (req,res) =>{
     const id = req.user.id;
     db.query('SELECT * from  where id =?',[id],(err,results)=>{
         if(err){
             console.log(err)
         }
-        const projects = results.map(project => ({
-            image_path:project.image_path,
-            title : project.title,
-            date : project.date,
-            location : project.location,
-            description :project.description
+        const profiles = results.map(profile => ({
+            usn:profile.usn,
+            name : profile.name,
+            phone : profile.phone,
+            email : profile.email,
+            profilePic :profile.profilePic,
+            Bio : profile.Bio
         }))
-        res.json({projects})
+        res.json({profiles})
     })
 }
