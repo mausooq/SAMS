@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAMS:MARKS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/css/style.css">
     <style>
         #head {
             margin-left: 9rem;
@@ -23,9 +27,9 @@
             max-width: 80vw;
             min-height: 80vh;
             border: 2px solid black;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 5%;
             padding: 5px;
+            background-color: #f1f1f1;
         }
 
         /* Style the button that is used to open and close the collapsible content */
@@ -156,175 +160,213 @@
         .add-btns {
             display: flex;
         }
+
+        .marks-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .marks-table th,
+        .marks-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .marks-table th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 
 <body>
-    <h1 id="head">Marks</h1>
-    <div class="add-cont">
-        <h2>Add Subject</h2>
-        <hr>
-        <div class="input-cont">
-            <input type="text" class="input" placeholder="Enter Subject Name">
-            <input type="number" class="input" placeholder="Enter Max Name" min="0" pattern="\d*">
-            <input type="number" class="input" placeholder="Enter Subject Marks" min="0" pattern="\d*">
-            <input type="text" class="input" placeholder="Enter Subject Grade">
+    <nav>
+        <h3><a href="/dashboard">SAMS</a></h3>
+        <ul>
+            <li><a href="/marks">MARKS</a></li>
+            <li><a href="/projects">PROJECTS</a></li>
+            <li><a href="/achievement">ACHIEVEMENTS</a></li>
+
+        </ul>
+    </nav>
+    {{#if message}}
+    <h6 class="alert alert-danger mt-4 mb-4">{{message}}</h6>
+    {{/if}}
+    <div class="container">
+        <div class="add-cont">
+            <h2>Add Subject</h2>
+            <hr>
+            <form action="/">
+            <div class="input-cont">
+                <input type="text" class="input" placeholder="Enter Subject Name" required>
+                <input type="number" class="input" placeholder="Enter Max Name" min="0" max="100" pattern="\d*"
+                    required>
+                <input type="number" class="input" placeholder="Enter Subject Marks" min="0" max="100" pattern="\d*"
+                    required>
+                <input type="text" class="input" placeholder="Enter Subject Grade" required>
+            </div>
+            <div class="add-btns">
+                <button class="add-btn">Add</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+            </form>
         </div>
-        <div class="add-btns">
-            <button class="add-btn">Add</button>
-            <button class="cancel-btn">Cancel</button>
+        <div class="main">
+            <button type="button" class="collapsible">Semester 1</button>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+            <button type="button" class="collapsible">Semester 2</button>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+
+            <button type="button" class="collapsible">Semester 3</button>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+            <button type="button" class="collapsible">Semester 4</button>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+            <button type="button" class="collapsible">Semester 5</button>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+            <button type="button" class="collapsible">Semester 6</button>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+            <button type="button" class="collapsible">Semester 7</button>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+            <button type="button" class="collapsible">Semester 8</button>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+
+            <!-- Add other semesters here -->
+
         </div>
     </div>
-    <div class="main">
-        <button type="button" class="collapsible">Semester 1</button>
-        <!-- Within each semester collapsible section -->
-        <div class="content">
-            <div class="items">
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Max Marks</th>
-                            <th>Subject Marks</th>
-                            <th>Subject Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <button class="btn">Add Subject</button>
-        </div>
-        <button type="button" class="collapsible">Semester 2</button>
-        <!-- Within each semester collapsible section -->
-        <div class="content">
-            <div class="items">
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Max Marks</th>
-                            <th>Subject Marks</th>
-                            <th>Subject Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <button class="btn">Add Subject</button>
-        </div>
-
-        <button type="button" class="collapsible">Semester 3</button>
-        <!-- Within each semester collapsible section -->
-        <div class="content">
-            <div class="items">
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Max Marks</th>
-                            <th>Subject Marks</th>
-                            <th>Subject Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <button class="btn">Add Subject</button>
-        </div>
-        <button type="button" class="collapsible">Semester 4</button>
-        <!-- Within each semester collapsible section -->
-        <div class="content">
-            <div class="items">
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Max Marks</th>
-                            <th>Subject Marks</th>
-                            <th>Subject Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <button class="btn">Add Subject</button>
-        </div>
-        <button type="button" class="collapsible">Semester 5</button>
-        <!-- Within each semester collapsible section -->
-        <div class="content">
-            <div class="items">
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Max Marks</th>
-                            <th>Subject Marks</th>
-                            <th>Subject Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <button class="btn">Add Subject</button>
-        </div>
-        <button type="button" class="collapsible">Semester 6</button>
-        <!-- Within each semester collapsible section -->
-        <div class="content">
-            <div class="items">
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Max Marks</th>
-                            <th>Subject Marks</th>
-                            <th>Subject Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <button class="btn">Add Subject</button>
-        </div>
-        <button type="button" class="collapsible">Semester 7</button>
-        <!-- Within each semester collapsible section -->
-        <div class="content">
-            <div class="items">
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Max Marks</th>
-                            <th>Subject Marks</th>
-                            <th>Subject Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <button class="btn">Add Subject</button>
-        </div>
-        <button type="button" class="collapsible">Semester 8</button>
-        <!-- Within each semester collapsible section -->
-        <div class="content">
-            <div class="items">
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Subject Name</th>
-                            <th>Max Marks</th>
-                            <th>Subject Marks</th>
-                            <th>Subject Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <button class="btn">Add Subject</button>
-        </div>
-
-        <!-- Add other semesters here -->
-
-    </div>
+    <footer>
+        <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
+        <a href="/auth/logout">Logout</a>
+    </footer>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const btns = document.querySelectorAll(".btn");
@@ -422,7 +464,7 @@
                 if (content.style.maxHeight) {
                     content.style.maxHeight = null;
                 } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.maxHeight = (content.scrollHeight + 100) + "px";
                 }
             });
         }
