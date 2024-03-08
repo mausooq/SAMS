@@ -9,6 +9,7 @@ const db = mysql.createConnection({
  });
 
  exports.uploadSubject = async(req,res)=>{
-            
+   const{semester,subjectName,maxMarks,subjectMarks,subjectGrade,} = req.body;
+   db.query('INSERT INTO SEMESTER SET ? ; ')
  }
   

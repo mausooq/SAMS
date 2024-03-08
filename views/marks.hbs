@@ -389,6 +389,7 @@
             // Function to add marks to the table
             function addMarks() {
                 // Get input values
+                 const semester = document.querySelector(".add-cont").dataset.semester;
                 const subjectName = document.querySelector(".input-cont input[type='text']").value;
                 const maxMarks = document.querySelector(".input-cont input[type='number']").value;
                 const subjectMarks = document.querySelector(".input-cont input[type='number']:nth-of-type(2)").value;
@@ -409,7 +410,8 @@
 
                 // Find the current active content (associated with the clicked semester)
                 const activeContent = document.querySelector(".collapsible.active").nextElementSibling.querySelector(".items table tbody");
-
+               
+               
                 // Add the new row to the table
                 activeContent.appendChild(newRow);
 
@@ -428,6 +430,7 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        semester,
                         subjectName,
                         maxMarks,
                         subjectMarks,
