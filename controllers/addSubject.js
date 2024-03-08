@@ -32,9 +32,6 @@ const db = mysql.createConnection({
          if(error){
             console.log(err);
          }
-            res.render('marks',{
-               message:"marks added  successfully"
-            })
       })
       }
       else{
@@ -62,9 +59,6 @@ const db = mysql.createConnection({
                if(error){
                   console.log(err);
                }
-                  res.render('marks',{
-                  msg:"marks added  successfully"
-                  });
                
             })
          }
