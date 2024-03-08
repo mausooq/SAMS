@@ -197,20 +197,18 @@
         <div class="add-cont">
             <h2>Add Subject</h2>
             <hr>
-            <form action="/">
             <div class="input-cont">
-                <input type="text" class="input" placeholder="Enter Subject Name" required>
-                <input type="number" class="input" placeholder="Enter Max Name" min="0" max="100" pattern="\d*"
-                    required>
-                <input type="number" class="input" placeholder="Enter Subject Marks" min="0" max="100" pattern="\d*"
-                    required>
-                <input type="text" class="input" placeholder="Enter Subject Grade" required>
+                <input type="text" class="input" placeholder="Enter Subject Name" name="Sname" required>
+                <input type="number" class="input" placeholder="Enter Max Name" name="maxMarks" min="0" max="100"
+                    pattern="\d*" required>
+                <input type="number" class="input" placeholder="Enter Subject Marks" name="minMarks" min="0" max="100"
+                    pattern="\d*" required>
+                <input type="text" class="input" placeholder="Enter Subject Grade" name="SGrade" required>
             </div>
             <div class="add-btns">
-                <button class="add-btn">Add</button>
-                <button class="cancel-btn">Cancel</button>
+                <button type="submit" class="add-btn">Add</button>
+                {{!-- <button class="cancel-btn">Cancel</button> --}}
             </div>
-            </form>
         </div>
         <div class="main">
             <button type="button" class="collapsible">Semester 1</button>
@@ -367,6 +365,7 @@
         <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
         <a href="/auth/logout">Logout</a>
     </footer>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const btns = document.querySelectorAll(".btn");
@@ -419,12 +418,29 @@
 
                 // Set the height of the content area
                 const content = activeContent.parentElement;
-                console.log(tableHeight);
-                console.log(content.style.height)
                 content.style.height = `${tableHeight}px`;
 
                 // Clear input fields
                 document.querySelectorAll(".input-cont input").forEach(input => input.value = "");
+                fetch('http://localhost:5000/auth/addSubject', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        subjectName,
+                        maxMarks,
+                        subjectMarks,
+                        subjectGrade,
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
             }
 
             // Add event listener to the "Add" button

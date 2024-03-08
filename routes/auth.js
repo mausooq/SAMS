@@ -15,8 +15,10 @@ const addAwards = require('../controllers/addAward')
 const Awards = require('../controllers/award')
 const addEca = require('../controllers/addEca')
 const Eca = require('../controllers/eca')
-const Profile = require('../controllers/profile')
+const addSubject = require('../controllers/addSubject')
 const authorization = require('../middlewares/authorization');
+
+
 // Creating an instance of express and configuring it to use body-parser
 const router = express.Router();
 router.use(bodyParser.json());
@@ -53,7 +55,7 @@ router.get('/award',authorization.isLoggedIn,Awards.displayAward)
 router.post('/addAward',authorization.isLoggedIn,upload.single('awardsImage'),addAwards.uploadAward);
 router.get('/eca',authorization.isLoggedIn,Eca.displayEca)
 router.post('/addEca',authorization.isLoggedIn,upload.single('ecaImage'),addEca.uploadEca);
-router.get('/profile',authorization.isLoggedIn,Profile.displayProfile);
+router.post('/addSubject',authorization.isLoggedIn,addSubject.uploadSubject)
 
 
 module.exports = router;
