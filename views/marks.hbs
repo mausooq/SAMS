@@ -199,6 +199,7 @@
         <a href="/auth/logout">Logout</a>
     </footer>
 
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const btns = document.querySelectorAll(".btn");
@@ -218,6 +219,34 @@
                     addCont.style.visibility = "hidden"; // Change visibility to "hidden"
                 });
             });
+            function fetchDataForSemester(semester) {
+                fetch(`http://localhost:5000/auth/getSubjects/${semester}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Get the table body for the current semester
+                        const tableBody = document.getElementById(`${semester.toLowerCase()}TableBody`);
+
+                        // Clear existing rows
+                        tableBody.innerHTML = '';
+
+                        // Populate the table with the fetched data
+                        data.forEach(subject => {
+                            const newRow = document.createElement("tr");
+                            newRow.innerHTML = `
+                        <td>${subject.subjectName}</td>
+                        <td>${subject.maxMarks}</td>
+                        <td>${subject.subjectMarks}</td>
+                        <td>${subject.subjectGrade}</td>
+                    `;
+                            tableBody.appendChild(newRow);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            }
+
+            // Call fetchDataForSemester for each semester
+            const semesters = ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5', 'Semester 6', 'Semester 7', 'Semester 8'];
+            semesters.forEach(semester => fetchDataForSemester(semester));
 
             // Function to add marks to the table
             function addMarks() {
@@ -295,6 +324,10 @@
 
         for (i = 0; i < coll.length; i++) {
             coll[i].addEventListener("click", function () {
+                // Log the active collapsible
+                var activeCollapsible = document.querySelector(".collapsible.active");
+                console.log("Active Collapsible:", activeCollapsible);
+
                 // Close all collapsibles
                 var allCollapsibleContents = document.getElementsByClassName("content");
                 for (var j = 0; j < allCollapsibleContents.length; j++) {
@@ -320,6 +353,7 @@
             });
         }
     </script>
+
 </body>
 
 </html>

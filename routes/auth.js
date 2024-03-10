@@ -16,6 +16,7 @@ const Awards = require('../controllers/award')
 const addEca = require('../controllers/addEca')
 const Eca = require('../controllers/eca')
 const addSubject = require('../controllers/addSubject')
+const Subjects = require('../controllers/subject')
 const authorization = require('../middlewares/authorization');
 
 
@@ -56,7 +57,7 @@ router.post('/addAward',authorization.isLoggedIn,upload.single('awardsImage'),ad
 router.get('/eca',authorization.isLoggedIn,Eca.displayEca)
 router.post('/addEca',authorization.isLoggedIn,upload.single('ecaImage'),addEca.uploadEca);
 router.post('/addSubject',authorization.isLoggedIn,addSubject.uploadSubject)
-
+router.get('/getSubjects/:semester',authorization.isLoggedIn,Subjects.getSubjectsBySemester);
 
 module.exports = router;
 

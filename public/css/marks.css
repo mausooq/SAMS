@@ -1,168 +1,163 @@
-
 #head {
-    margin-left: 9rem;
+  margin-left: 9rem;
 }
 
-
 .row {
-    display: flex;
+  display: flex;
 }
 
 .row .sgpa {
-    margin-left: 940px;
+  margin-left: 940px;
 }
 
 .main {
-    max-width: 80vw;
-    min-height: 80vh;
-    border: 2px solid black;
-    margin: 5%;
-    padding: 5px;
-    background-color: #f1f1f1;
+  max-width: 80vw;
+  min-height: 80vh;
+  max-height: 100%;
+  border: 2px solid black;
+  margin: 5%;
+  padding: 5px;
+  background-color: #f1f1f1;
 }
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.5s ease;
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.5s ease;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
 .collapsible:hover {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    max-height: 100%;
-    background-color: #f1f1f1;
-    transition: max-height 0.2s ease-out;
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  max-height: 100%;
+  background-color: #f1f1f1;
+  transition: max-height 0.2s ease-out;
 }
-
 
 .btn {
-    padding: 0.5rem;
-    margin: 6px;
-
+  padding: 0.5rem;
+  margin: 6px;
 }
 
 .add-cont {
-    z-index: 1;
-    border: 2px solid black;
-    width: 30rem;
-    height: 30rem;
+  z-index: 1;
+  border: 2px solid black;
+  width: 30rem;
+  height: 30rem;
 }
 
 .add-cont {
-    z-index: 2;
-    /* Set a higher z-index for add-cont to make it appear above main */
-    border: 2px solid black;
-    width: 30rem;
-    height: 30rem;
-    position: absolute;
-    /* Position the add-cont div */
-    top: 50%;
-    /* Position it in the middle of the viewport */
-    left: 50%;
-    /* Position it in the middle of the viewport */
-    transform: translate(-50%, -50%);
-    /* Center the add-cont div */
-    background-color: #444;
-    color: white;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    visibility: hidden;
+  z-index: 2;
+  /* Set a higher z-index for add-cont to make it appear above main */
+  border: 2px solid black;
+  width: 30rem;
+  height: 30rem;
+  position: absolute;
+  /* Position the add-cont div */
+  top: 50%;
+  /* Position it in the middle of the viewport */
+  left: 50%;
+  /* Position it in the middle of the viewport */
+  transform: translate(-50%, -50%);
+  /* Center the add-cont div */
+  background-color: #444;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
 }
 
 .main {
-    max-width: 80vw;
-    min-height: 80vh;
-    border: 2px solid black;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px;
-    position: relative;
-    /* Set position to relative */
-    z-index: 1;
-    /* Set a lower z-index for main to place it behind add-cont */
-    overflow: scroll;
+  max-width: 80vw;
+  min-height: 80vh;
+  border: 2px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  position: relative;
+  /* Set position to relative */
+  z-index: 1;
+  /* Set a lower z-index for main to place it behind add-cont */
+  overflow: scroll;
 }
 
 .add-cont h2 {
-    margin-left: 2rem;
+  margin-left: 2rem;
 }
 
 .add-cont hr {
-    margin: 0;
+  margin: 0;
 }
 
 .input-cont {
-    width: 30rem;
-    height: 20rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 30rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .input {
-    width: 300px;
-    height: 30px;
-    margin: 5px;
-    border-radius: 5px;
+  width: 300px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 .add-btn {
-    font-size: 1.2rem;
-    cursor: pointer;
-    width: 70px;
-    height: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
 }
 
 .cancel-btn {
-    font-size: 1.1rem;
-    cursor: pointer;
-    width: 70px;
-    height: 30px;
-    margin-right: auto;
-    border-radius: 5px;
-
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+  margin-right: auto;
+  border-radius: 5px;
 }
 
 .add-btns {
-    display: flex;
+  display: flex;
 }
 
 .marks-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
 }
 
 .marks-table th,
 .marks-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
 
 .marks-table th {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
