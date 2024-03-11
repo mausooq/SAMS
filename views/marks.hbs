@@ -10,350 +10,57 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/marks.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <style>
+        .semBox {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 100vh;
+        }
 
+        .semester-box {
+            width: 150px;
+            height: 150px;
+            margin: 0px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1.2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
 </head>
 
 <body>
     <nav>
         <h3><a href="/dashboard">SAMS</a></h3>
-        <ul>
-            <li><a href="/marks">MARKS</a></li>
-            <li><a href="/projects">PROJECTS</a></li>
-            <li><a href="/achievement">ACHIEVEMENTS</a></li>
-
-        </ul>
     </nav>
-    {{#if msg}}
-    <h6 class="alert alert-success mt-4 mb-4">{{msg}}</h6>
-    {{/if}}
     <div class="container">
-        <div class="add-cont">
-            <h2>Add Subject</h2>
-            <hr>
-            <div class="input-cont">
-                <input type="text" class="input" placeholder="Enter Subject Name" name='subjectName' required>
-                <input type="number" class="input" placeholder="Enter Max Name" name='maxMarks' min="0" max="100"
-                    pattern="\d*" required>
-                <input type="number" class="input" placeholder="Enter Subject Marks" name='subjectMarks' min="0"
-                    max="100" pattern="\d*" required>
-                <input type="text" class="input" placeholder="Enter Subject Grade" name='subjectGrade' required>
-            </div>
-            <div class="add-btns">
-                <button type="submit" class="add-btn">Add</button>
-                <button class="cancel-btn">Cancel</button>
-            </div>
-        </div>
-        <div class="main">
-            <button type="button" class="collapsible">Semester 1</button>
-            <!-- Within each semester collapsible section -->
-            <div class="content">
-                <div class="items">
-                    <table class="marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Max Marks</th>
-                                <th>Subject Marks</th>
-                                <th>Subject Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <button class="btn">Add Subject</button>
-            </div>
-            <button type="button" class="collapsible">Semester 2</button>
-            <!-- Within each semester collapsible section -->
-            <div class="content">
-                <div class="items">
-                    <table class="marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Max Marks</th>
-                                <th>Subject Marks</th>
-                                <th>Subject Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <button class="btn">Add Subject</button>
-            </div>
-
-            <button type="button" class="collapsible">Semester 3</button>
-            <!-- Within each semester collapsible section -->
-            <div class="content">
-                <div class="items">
-                    <table class="marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Max Marks</th>
-                                <th>Subject Marks</th>
-                                <th>Subject Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <button class="btn">Add Subject</button>
-            </div>
-            <button type="button" class="collapsible">Semester 4</button>
-            <!-- Within each semester collapsible section -->
-            <div class="content">
-                <div class="items">
-                    <table class="marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Max Marks</th>
-                                <th>Subject Marks</th>
-                                <th>Subject Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <button class="btn">Add Subject</button>
-            </div>
-            <button type="button" class="collapsible">Semester 5</button>
-            <!-- Within each semester collapsible section -->
-            <div class="content">
-                <div class="items">
-                    <table class="marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Max Marks</th>
-                                <th>Subject Marks</th>
-                                <th>Subject Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <button class="btn">Add Subject</button>
-            </div>
-            <button type="button" class="collapsible">Semester 6</button>
-            <!-- Within each semester collapsible section -->
-            <div class="content">
-                <div class="items">
-                    <table class="marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Max Marks</th>
-                                <th>Subject Marks</th>
-                                <th>Subject Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <button class="btn">Add Subject</button>
-            </div>
-            <button type="button" class="collapsible">Semester 7</button>
-            <!-- Within each semester collapsible section -->
-            <div class="content">
-                <div class="items">
-                    <table class="marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Max Marks</th>
-                                <th>Subject Marks</th>
-                                <th>Subject Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <button class="btn">Add Subject</button>
-            </div>
-            <button type="button" class="collapsible">Semester 8</button>
-            <!-- Within each semester collapsible section -->
-            <div class="content">
-                <div class="items">
-                    <table class="marks-table">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Max Marks</th>
-                                <th>Subject Marks</th>
-                                <th>Subject Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <button class="btn">Add Subject</button>
-            </div>
-
-            <!-- Add other semesters here -->
-
+        <div class="semBox">
+            <div class="semester-box" onclick="location.href='/sem1'">Semester 1</div>
+            <div class="semester-box">Semester 2</div>
+            <div class="semester-box">Semester 3</div>
+            <div class="semester-box">Semester 4</div>
+            <div class="semester-box">Semester 5</div>
+            <div class="semester-box">Semester 6</div>
+            <div class="semester-box">Semester 7</div>
+            <div class="semester-box">Semester 8</div>
         </div>
     </div>
     <footer>
         <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
         <a href="/auth/logout">Logout</a>
     </footer>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const btns = document.querySelectorAll(".btn");
-            const cancelbtns = document.querySelectorAll(".cancel-btn");
-
-            btns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const addCont = document.querySelector(".add-cont");
-                    addCont.style.visibility = "visible"; // Change visibility to "visible"
-                    addCont.dataset.semester = btn.parentElement.previousElementSibling.textContent.trim();
-                });
-            });
-
-            cancelbtns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const addCont = document.querySelector(".add-cont");
-                    addCont.style.visibility = "hidden"; // Change visibility to "hidden"
-                });
-            });
-            function fetchDataForSemester(semester) {
-                fetch(`http://localhost:5000/auth/getSubjects/${semester}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Get the table body for the current semester
-                        const tableBody = document.getElementById(`${semester.toLowerCase()}TableBody`);
-
-                        // Clear existing rows
-                        tableBody.innerHTML = '';
-
-                        // Populate the table with the fetched data
-                        data.forEach(subject => {
-                            const newRow = document.createElement("tr");
-                            newRow.innerHTML = `
-                        <td>${subject.subjectName}</td>
-                        <td>${subject.maxMarks}</td>
-                        <td>${subject.subjectMarks}</td>
-                        <td>${subject.subjectGrade}</td>
-                    `;
-                            tableBody.appendChild(newRow);
-                        });
-                    })
-                    .catch(error => console.error('Error fetching data:', error));
-            }
-
-            // Call fetchDataForSemester for each semester
-            const semesters = ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5', 'Semester 6', 'Semester 7', 'Semester 8'];
-            semesters.forEach(semester => fetchDataForSemester(semester));
-
-            // Function to add marks to the table
-            function addMarks() {
-                // Get input values
-                const semester = document.querySelector(".add-cont").dataset.semester;
-                const subjectName = document.querySelector(".input-cont input[name= 'subjectName']").value;
-                const maxMarks = document.querySelector(".input-cont input[name ='maxMarks']").value;
-                const subjectMarks = document.querySelector(".input-cont input[name='subjectMarks']").value;
-                const subjectGrade = document.querySelector(".input-cont input[name='subjectGrade']").value;
-                if (subjectName === "" || subjectMarks === "" || subjectGrade === "" || maxMarks === "") {
-                    return;
-                }
-
-                // Create a new row for the table
-                const newRow = document.createElement("tr");
-                newRow.innerHTML = `
-                  <td>${subjectName}</td>
-                  <td>${maxMarks}</td>
-                  <td>${subjectMarks}</td>
-                  <td>${subjectGrade}</td>
-              `;
-
-                // Find the current active content (associated with the clicked semester)
-                const activeContent = document.querySelector(".collapsible.active").nextElementSibling.querySelector(".items table tbody");
-
-
-                // Add the new row to the table
-                activeContent.appendChild(newRow);
-
-                // Get the height of the table's content
-                const tableHeight = activeContent.getBoundingClientRect().height;
-
-                // Set the height of the content area
-                const content = activeContent.parentElement;
-                content.style.height = `${tableHeight}px`;
-
-                // Clear input fields
-                document.querySelectorAll(".input-cont input").forEach(input => input.value = "");
-                fetch('http://localhost:5000/auth/addSubject', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        semester,
-                        subjectName,
-                        maxMarks,
-                        subjectMarks,
-                        subjectGrade,
-                    }),
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            }
-
-            // Add event listener to the "Add" button
-            document.querySelectorAll(".add-btn").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    addMarks();
-                    document.querySelector(".add-cont").style.visibility = "hidden";
-                });
-
-            });
-        });
-    </script>
-
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
-                // Log the active collapsible
-                var activeCollapsible = document.querySelector(".collapsible.active");
-                console.log("Active Collapsible:", activeCollapsible);
-
-                // Close all collapsibles
-                var allCollapsibleContents = document.getElementsByClassName("content");
-                for (var j = 0; j < allCollapsibleContents.length; j++) {
-                    allCollapsibleContents[j].style.display = "none";
-                    coll[j].classList.remove("active");
-                }
-
-                // Toggle the active class for the clicked collapsible
-                this.classList.toggle("active");
-
-                // Toggle display for the content next to the clicked collapsible
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = (content.scrollHeight + 100) + "px";
-                }
-            });
-        }
-    </script>
-
 </body>
 
 </html>

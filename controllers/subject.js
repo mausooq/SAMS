@@ -7,7 +7,7 @@ const db = mysql.createConnection({
  });
  exports.getSubjectsBySemester =  (req,res) =>{
     const semester = req.params.semester;
-    // console.log(semester);
+    console.log(semester);
     const id = req.user.id;
    db.query(
         `SELECT * FROM MARKS WHERE semId IN (SELECT semId FROM Semester WHERE ID = ? AND semesterName = ?)`,
