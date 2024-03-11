@@ -17,10 +17,10 @@
     <nav>
         <h3><a href="/dashboard">SAMS</a></h3>
     </nav>
-{{#if msg}}
-    <h6 class="alert alert-primary mt-4 mb-4">{{msg}}</h6>
-{{/if}}
 
+    {{#if msg}}
+    <h6 class="alert alert-primary mt-4 mb-4">{{msg}}</h6>
+    {{/if}}
     <div class="container">
         <div class="add-cont">
             <h2>Add Subject</h2>
@@ -50,10 +50,10 @@
                                 <th>Max Marks</th>
                                 <th>Subject Marks</th>
                                 <th>Subject Grade</th>
-                                <th>Action</th> <!-- New column for delete button -->
+
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody class="marks-tbody"></tbody>
                     </table>
                 </div>
                 <button class="btn">Add Subject</button>
@@ -65,98 +65,109 @@
         <a href="/auth/logout">Logout</a>
     </footer>
     <script>
-        const btns = document.querySelectorAll(".btn");
-        const cancelbtns = document.querySelectorAll(".cancel-btn");
-        const addCont = document.querySelector(".add-cont");
+        document.addEventListener("DOMContentLoaded", () => {
+            const btns = document.querySelectorAll(".btn");
+            const cancelbtns = document.querySelectorAll(".cancel-btn");
+            const addCont = document.querySelector(".add-cont");
+            fetchAndDisplayMarks("semester 1");
 
-        btns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                addCont.style.visibility = "visible";
-                addCont.dataset.semester = btn.parentElement.previousElementSibling.textContent.trim();
+            btns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const addCont = document.querySelector(".add-cont");
+                    addCont.style.visibility = "visible";
+                    addCont.dataset.semester = btn.parentElement.previousElementSibling.textContent.trim();
+                });
             });
-        });
-        cancelbtns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                addCont.style.visibility = "hidden";
+
+            cancelbtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const addCont = document.querySelector(".add-cont");
+                    addCont.style.visibility = "hidden";
+                });
             });
-        });
-        // Function to add marks to the table
-    function addMarks() {
-        // Get input values
-        const semester = addCont.dataset.semester;
-        const subjectName = document.querySelector(".input-cont input[name= 'subjectName']").value;
-        const maxMarks = document.querySelector(".input-cont input[name ='maxMarks']").value;
-        const subjectMarks = document.querySelector(".input-cont input[name='subjectMarks']").value;
-        const subjectGrade = document.querySelector(".input-cont input[name='subjectGrade']").value;
-        if (subjectName === "" || subjectMarks === "" || subjectGrade === "" || maxMarks === "") {
-            return;
-        }
 
-        // Create a new row for the table
-        const newRow = document.createElement("tr");
-        newRow.innerHTML = `
-          <td>${subjectName}</td>
-          <td>${maxMarks}</td>
-          <td>${subjectMarks}</td>
-          <td>${subjectGrade}</td>
-          <td><button class="delete-btn">Delete</button></td>
-      `;
+            function fetchAndDisplayMarks(semester) {
+                // Fetch data from the backend based on the clicked semester
+                fetch(`http://localhost:5000/auth/getSubjects/${semester}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        // Clear existing table content
+                        const tbody = document.querySelector(".marks-tbody");
+                        tbody.innerHTML = "";
 
-        // Find the current active content (associated with the clicked semester)
-        const activeContent = document.querySelector(`#${semester}`).nextElementSibling.querySelector(".items table tbody");
+                        // Populate the table with fetched data
+                        data.forEach((subject) => {
+                            const newRow = document.createElement("tr");
+                            newRow.innerHTML = `
+                        <td>${subject.subName}</td>
+                        <td>${subject.maxMark}</td>
+                        <td>${subject.subMark}</td>
+                        <td>${subject.grade}</td>
+                    `;
+                            tbody.appendChild(newRow);
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
 
-        // Add event listener to the delete button
-        const deleteButton = newRow.querySelector(".delete-btn");
-        deleteButton.addEventListener("click", () => {
-            // Handle delete functionality here
-            // You can remove the entire row from the table
-            newRow.remove();
-        });
+            // Add event listener to the semester buttons
 
-        // Add the new row to the table
-        activeContent.appendChild(newRow);
 
-        // Get the height of the table's content
-        const tableHeight = activeContent.getBoundingClientRect().height;
-
-        // Set the height of the content area
-        const content = activeContent.parentElement;
-        content.style.height = `${tableHeight}px`;
-
-        // Clear input fields
-        document.querySelectorAll(".input-cont input").forEach(input => input.value = "");
-        fetch('http://localhost:5000/auth/addSubject', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                semester,
-                subjectName,
-                maxMarks,
-                subjectMarks,
-                subjectGrade,
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
+            // Function to add marks to the table
+            document.querySelectorAll(".add-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    addMarks();
+                    document.querySelector(".add-cont").style.visibility = "hidden";
+                });
             });
-    }
 
-    // Add event listener to the "Add" button
-    document.querySelectorAll(".add-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            addMarks();
-            addCont.style.visibility = "hidden";
+            function addMarks() {
+                const semester = addCont.dataset.semester;
+                const subjectName = document.querySelector(".input-cont input[name='subjectName']").value;
+                const maxMarks = document.querySelector(".input-cont input[name='maxMarks']").value;
+                const subjectMarks = document.querySelector(".input-cont input[name='subjectMarks']").value;
+                const subjectGrade = document.querySelector(".input-cont input[name='subjectGrade']").value;
+
+                if (subjectName === "" || subjectMarks === "" || subjectGrade === "" || maxMarks === "") {
+                    return;
+                }
+
+                document.querySelectorAll(".input-cont input").forEach(input => input.value = "");
+                fetch('http://localhost:5000/auth/addSubject', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        semester,
+                        subjectName,
+                        maxMarks,
+                        subjectMarks,
+                        subjectGrade,
+                    }),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data);
+                        // After successfully adding marks, update the table
+                        fetchAndDisplayMarks(semester);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
         });
-    });
-
 
     </script>
+
 </body>
 
 </html>

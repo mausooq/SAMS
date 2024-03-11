@@ -226,7 +226,7 @@
                     .then((response) => response.json())
                     .then((data) => {
                         // Clear existing table content
-                        const activeContent = document.querySelector({semester}).nextElementSibling.querySelector(".items table tbody");
+                        const activeContent = document.querySelector({ semester }).nextElementSibling.querySelector(".items table tbody");
                         activeContent.innerHTML = "";
 
                         // Populate the table with fetched data
@@ -262,61 +262,7 @@
             })
             // Function to add marks to the table
             function addMarks() {
-                // Get input values
-                const semester = document.querySelector(".add-cont").dataset.semester;
-                const subjectName = document.querySelector(".input-cont input[name= 'subjectName']").value;
-                const maxMarks = document.querySelector(".input-cont input[name ='maxMarks']").value;
-                const subjectMarks = document.querySelector(".input-cont input[name='subjectMarks']").value;
-                const subjectGrade = document.querySelector(".input-cont input[name='subjectGrade']").value;
-                if (subjectName === "" || subjectMarks === "" || subjectGrade === "" || maxMarks === "") {
-                    return;
-                }
-
-                // Create a new row for the table
-                const newRow = document.createElement("tr");
-                newRow.innerHTML = `
-                  <td>${subjectName}</td>
-                  <td>${maxMarks}</td>
-                  <td>${subjectMarks}</td>
-                  <td>${subjectGrade}</td>
-              `;
-
-                // Find the current active content (associated with the clicked semester)
-                const activeContent = document.querySelector(".collapsible.active").nextElementSibling.querySelector(".items table tbody");
-
-
-                // Add the new row to the table
-                activeContent.appendChild(newRow);
-
-                // Get the height of the table's content
-                const tableHeight = activeContent.getBoundingClientRect().height;
-
-                // Set the height of the content area
-                const content = activeContent.parentElement;
-                content.style.height = `${tableHeight}px`;
-
-                // Clear input fields
-                document.querySelectorAll(".input-cont input").forEach(input => input.value = "");
-                fetch('http://localhost:5000/auth/addSubject', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        semester,
-                        subjectName,
-                        maxMarks,
-                        subjectMarks,
-                        subjectGrade,
-                    }),
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
+                consol.log("hello")
             }
 
             // Add event listener to the "Add" button
