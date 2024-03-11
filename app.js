@@ -40,6 +40,7 @@ app.use('/assets', express.static('assets'));
 app.set('view engine', 'hbs');
 //define router
 app.use('/',require('./routes/pages.js'))
+app.use('/marks',require('./routes/semPages.js'))
 app.use('/auth',require('./routes/auth.js'))
 // Starting the server
 app.listen(5000, () => {

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMS:SEMESTER 1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/marks.css">
+    <link rel="stylesheet" href="/css/cards.css">
+</head>
+
+<body>
+    <nav>
+        <h3><a href="/dashboard">SAMS</a></h3>
+    </nav>
+{{#if msg}}
+    <h6 class="alert alert-primary mt-4 mb-4">{{msg}}</h6>
+{{/if}}
+
+    <div class="container">
+        <div class="add-cont">
+            <h2>Add Subject</h2>
+            <hr>
+            <div class="input-cont">
+                <input type="text" class="input" placeholder="Enter Subject Name" name='subjectName' required>
+                <input type="number" class="input" placeholder="Enter Max Name" name='maxMarks' min="0" max="100"
+                    pattern="\d*" required>
+                <input type="number" class="input" placeholder="Enter Subject Marks" name='subjectMarks' min="0"
+                    max="100" pattern="\d*" required>
+                <input type="text" class="input" placeholder="Enter Subject Grade" name='subjectGrade' required>
+            </div>
+            <div class="add-btns">
+                <button type="submit" class="add-btn">Add</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="collapsible" id="semester 1">Semester 1</div>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                                <th>Action</th> <!-- New column for delete button -->
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
+        <a href="/auth/logout">Logout</a>
+    </footer>
+    <script>
+        const btns = document.querySelectorAll(".btn");
+        const cancelbtns = document.querySelectorAll(".cancel-btn");
+        const addCont = document.querySelector(".add-cont");
+
+        btns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                addCont.style.visibility = "visible";
+                addCont.dataset.semester = btn.parentElement.previousElementSibling.textContent.trim();
+            });
+        });
+        cancelbtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                addCont.style.visibility = "hidden";
+            });
+        });
+        // Function to add marks to the table
+    function addMarks() {
+        // Get input values
+        const semester = addCont.dataset.semester;
+        const subjectName = document.querySelector(".input-cont input[name= 'subjectName']").value;
+        const maxMarks = document.querySelector(".input-cont input[name ='maxMarks']").value;
+        const subjectMarks = document.querySelector(".input-cont input[name='subjectMarks']").value;
+        const subjectGrade = document.querySelector(".input-cont input[name='subjectGrade']").value;
+        if (subjectName === "" || subjectMarks === "" || subjectGrade === "" || maxMarks === "") {
+            return;
+        }
+
+        // Create a new row for the table
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td>${subjectName}</td>
+          <td>${maxMarks}</td>
+          <td>${subjectMarks}</td>
+          <td>${subjectGrade}</td>
+          <td><button class="delete-btn">Delete</button></td>
+      `;
+
+        // Find the current active content (associated with the clicked semester)
+        const activeContent = document.querySelector(`#${semester}`).nextElementSibling.querySelector(".items table tbody");
+
+        // Add event listener to the delete button
+        const deleteButton = newRow.querySelector(".delete-btn");
+        deleteButton.addEventListener("click", () => {
+            // Handle delete functionality here
+            // You can remove the entire row from the table
+            newRow.remove();
+        });
+
+        // Add the new row to the table
+        activeContent.appendChild(newRow);
+
+        // Get the height of the table's content
+        const tableHeight = activeContent.getBoundingClientRect().height;
+
+        // Set the height of the content area
+        const content = activeContent.parentElement;
+        content.style.height = `${tableHeight}px`;
+
+        // Clear input fields
+        document.querySelectorAll(".input-cont input").forEach(input => input.value = "");
+        fetch('http://localhost:5000/auth/addSubject', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                semester,
+                subjectName,
+                maxMarks,
+                subjectMarks,
+                subjectGrade,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    // Add event listener to the "Add" button
+    document.querySelectorAll(".add-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            addMarks();
+            addCont.style.visibility = "hidden";
+        });
+    });
+
+
+    </script>
+</body>
+
+</html>
