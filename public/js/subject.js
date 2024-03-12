@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(`http://localhost:5000/auth/getSubjects/${semester}`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 // Clear existing table content
                 const tbody = document.querySelector(".marks-tbody");
                 tbody.innerHTML = "";
