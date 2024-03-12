@@ -3,11 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAMS</title>
+  <meta name="viewport" content="width=
+    , initial-scale=1.0">
+  <title>SAMS.com | Student acheivements</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 
 <body>
@@ -19,21 +23,114 @@
       <li><a href="/signup">SIGN UP</a></li>
     </ul>
   </nav>
-  <div class="container mt-5">
-    <div class="jumbotron">
-      <h1 class="display-4">SAMS</h1>
-      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-        featured content or information.</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </p>
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="../assets/img/pexels-pixabay-434337.jpg" alt="First slide"
+          style="height: 40rem;">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="color: #063970; font-size: 5.1rem;">SAMS.</h5>
+          <p style="color: #063970; margin-bottom: 15rem; font-size: 1.5rem">Work Harder For Better Tommorow</p>
+        </div>
+      </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
+  <div>
+    <h2 style="margin: 0.8rem;">Introduction: </h2>
+    <hr>
+    <p style="font-size: 1.2rem; margin-left: 0.8rem;">In the dynamic landscape of education, it is crucial for students
+      to have a centralized platform to record and retrieve their academic journey's highlights. Our project aims to
+      develop a user-centric web application that empowers students to document their achievements, project
+      contributions, and workshop experiences throughout all eight semesters. This application will provide a secure
+      database for students to input and store relevant information, creating a personalized repository of their
+      educational milestones.</p>
+    <p style="font-size: 1.2rem; margin-left: 0.8rem; margin-right: 1.2rem; margin-bottom: 3rem;">
+      The significance of this project lies in its ability to assiststudents in recalling and reflecting upon their
+      academic endeavors.Beyond just a record-keeping tool, this web application will serve asa valuable resource for
+      students to construct meaningful resumes,showcasing their growth, skills, and contributions over the course
+      oftheir education. Through seamless accessibility and a user-friendlyinterface, we aim to empower students to
+      harness their pastachievements, aiding them in building a compelling narrative of theireducational journey.</p>
+  </div>
+  <div style="display: flex; margin-bottom: 2rem;">
+    <div class="text">
+      <h2 style="margin-left: 0.8rem;">Projects:</h2>
+      <p style="font-size: 1.2rem; margin-left: 0.8rem; width: 70rem;">In the SAMS, users can efficiently input and
+        manage project details, including names, descriptions, team members, roles, and outcomes. This streamlined
+        feature aims to create a centralized repository for project-related information, enabling students to vividly
+        showcase their academic achievements and project experiences.</p>
+    </div>
+    <div class="card" style="width: 18rem; margin-top: 3rem; margin-left: auto; margin-right: 3rem">
+      <img class="card-img-top" src="../assets/img/download.jpeg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Add Projects</h5>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; margin-bottom: 3rem;">
+    <div class="card" style="width: 20rem; margin-top: 3rem; margin-left: 0.8rem; margin-right: 1rem; height: 15rem;">
+      <img class="card-img-top" src="../assets/img/e5c6aeb82f4b1e8d0cf64e00bc5add24.png" alt="Card image cap"
+        style="margin-left: 0.8rem;">
+      <div class="card-body">
+        <h5 class="card-title">Add Marks</h5>
+      </div>
+    </div>
+    <div class="text" style="margin-bottom: 1rem; margin-top: 3rem;">
+      <h2 style="margin: 0.8rem;">Marks:</h2>
+      <p style="font-size: 1.2rem; margin-left: 0.8rem; width: 70rem;">The SAMS simplifies the process of recording
+        academic performance across different semesters. Under the "Marks" section, users can effortlessly input their
+        grades for each semester, creating a chronological and organized overview of their academic journey. This
+        feature streamlines the tracking of semester-wise progress, allowing students to reflect on their academic
+        achievements and easily access their cumulative grade history. The user-friendly interface ensures a seamless
+        experience, making it convenient for students to maintain a comprehensive record of their marks throughout their
+        educational tenure.</p>
+    </div>
+  </div>
+  <div style="display: flex; margin-bottom: 3rem;">
+    <div class="text" style="margin-top: 2rem;">
+      <h2 style="margin: 0.8rem;">Acheivements:</h2>
+      <p style="font-size: 1.2rem; margin-left: 0.8rem; width: 70rem; margin-top: 1rem;">Within the SAMS, students can
+        effectively capture and showcase their extracurricular milestones in the "Achievements" section. This feature
+        allows users to document awards, recognitions, and notable accomplishments throughout their academic journey.
+        With an intuitive interface, SAMS enables students to upload supporting materials, such as certificates or
+        images, providing a comprehensive and visually appealing representation of their achievements. This organized
+        record not only serves as a testament to their efforts but also empowers students to articulate their personal
+        growth and standout moments, contributing to a holistic view of their educational accomplishments.</p>
+    </div>
+    <div class="card" style="width: 18rem; margin-top: 3rem; margin-left: 1rem; margin-right: 3rem;">
+      <img class="card-img-top" src="../assets/img/9-93567_medal-win-winner-tag-prize-achievements-logo-png.png"
+        alt="Card image cap"
+        style="height: 10rem; width: 10rem; margin-left: auto; margin-right: auto; mix-blend-mode:darken;">
+      <div class="card-body">
+        <h5 class="card-title">Add Acheivements</h5>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div id="foot">
+      <div id="foot-det" style="font-size: 1.5rem;">
+        <center>
+          <h2>Contact Us</h2>
+          <p>Email: SAMS@gamil.com</p>
+          <p>&copy; 2024 SAMS. All rights reserved.</p>
+        </center>
+      </div>
+      <form action="#" method="post">
+        <label for="name"></label>
+        <input type="text" id="name" name="name" placeholder="Name" required>
+
+        <label for="email"></label>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+
+        <label for="message"></label>
+        <textarea id="message" name="message" rows="4" placeholder="Message" required></textarea>
+
+        <input type="submit" value="Submit">
+      </form>
+
+    </div>
+  </footer>
+
+
 </body>
 
 </html>

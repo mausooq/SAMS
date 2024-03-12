@@ -1,0 +1,113 @@
+#nav {
+  margin-left: auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Footer
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+} */
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+#foot {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+#foot-det {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Card */
+
+.card:hover {
+  box-shadow: 2px 3px gray;
+}
+
+/* text */
+
+.text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+nav {
+  background-color: #e0edfd;
+  color: #365486;
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+}
+nav h3 {
+  font-weight: bold;
+}
+nav h3 a {
+  color: #365486;
+  font-weight: bold;
+  text-decoration: none;
+}
+nav h3 a:hover {
+  color: #2ab0dd;
+  text-decoration: none;
+}
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+nav li {
+  list-style: none;
+  cursor: pointer;
+}
+nav li a {
+  color: #365486;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px 10px;
+}
+nav li a:hover {
+  text-decoration: none;
+  color: #2ab0dd;
+}
