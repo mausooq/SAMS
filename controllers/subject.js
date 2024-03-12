@@ -22,3 +22,17 @@ const db = mysql.createConnection({
         }
     );
 }
+
+exports.deleteSubject = (req,res)=>{
+    const subId = req.params.subId;
+    db.query( 'DELETE FROM MARKS WHERE subId = ?', [subId],(error, results) => {
+        if (error) {
+            // console.error('Error deleting subject:', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            // console.log(`Subject ${subjectId} deleted successfully`);
+            res.json({ success: true });
+        }
+    }
+);
+}

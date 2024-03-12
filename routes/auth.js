@@ -58,6 +58,7 @@ router.get('/eca',authorization.isLoggedIn,Eca.displayEca)
 router.post('/addEca',authorization.isLoggedIn,upload.single('ecaImage'),addEca.uploadEca);
 router.post('/addSubject',authorization.isLoggedIn,addSubject.uploadSubject)
 router.get('/getSubjects/:semester',authorization.isLoggedIn,Subjects.getSubjectsBySemester);
+router.delete('/deleteSubject/:subId',authorization.isLoggedIn,Subjects.deleteSubject);
 
 module.exports = router;
 

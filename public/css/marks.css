@@ -155,3 +155,16 @@
 .marks-table th {
   background-color: #f2f2f2;
 }
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.delete-btn:hover {
+  background-color: #bd2130;
+}
