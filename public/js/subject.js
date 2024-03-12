@@ -1,9 +1,9 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const btns = document.querySelectorAll(".btn");
     const cancelbtns = document.querySelectorAll(".cancel-btn");
     const addCont = document.querySelector(".add-cont");
-    fetchAndDisplayMarks(addCont.dataset.semester);
+    const semester = document.getElementById('semester').innerText;
+    fetchAndDisplayMarks(semester);
 
     btns.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (subjectName === "" || subjectMarks === "" || subjectGrade === "" || maxMarks === "") {
             return;
         }
+   
 
         document.querySelectorAll(".input-cont input").forEach(input => input.value = "");
         fetch('http://localhost:5000/auth/addSubject', {
@@ -116,7 +117,7 @@ function deleteSubject(subjectId) {
         })
         .then(data => {
             // After successfully deleting the subject, update the table
-            fetchAndDisplayMarks(addCont.dataset.semester);
+            fetchAndDisplayMarks(semester);
         })
         .catch(error => {
             console.error('Error:', error);

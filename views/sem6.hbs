@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMS:SEMESTER 6</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/marks.css">
+    <link rel="stylesheet" href="/css/cards.css">
+</head>
+
+<body>
+    <nav>
+        <h3><a href="/dashboard">SAMS</a></h3>
+    </nav>
+
+    <div class="container">
+        <div class="add-cont">
+            <h2>Add Subject</h2>
+            <hr>
+            <div class="input-cont">
+                <input type="text" class="input" placeholder="Enter Subject Name" name='subjectName' required>
+                <input type="number" class="input" placeholder="Enter Max Name" name='maxMarks' min="0" max="100"
+                    pattern="\d*" required>
+                <input type="number" class="input" placeholder="Enter Subject Marks" name='subjectMarks' min="0"
+                    max="100" pattern="\d*" required>
+                <input type="text" class="input" placeholder="Enter Subject Grade" name='subjectGrade' required>
+            </div>
+            <div class="add-btns">
+                <button type="submit" class="add-btn">Add</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="collapsible" id="semester">Semester 6</div>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Max Marks</th>
+                                <th>Subject Marks</th>
+                                <th>Subject Grade</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="marks-tbody"></tbody>
+                    </table>
+                </div>
+                <button class="btn">Add Subject</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
+        <a href="/auth/logout">Logout</a>
+    </footer>
+  
+
+    <script src="/js/subject.js"></script>
+</body>
+
+</html>
