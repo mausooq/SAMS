@@ -42,6 +42,9 @@ app.set('view engine', 'hbs');
 app.use('/',require('./routes/pages.js'))
 app.use('/marks',require('./routes/semPages.js'))
 app.use('/auth',require('./routes/auth.js'))
+
+app.use('/adminAuth',require('./routes/adminAuth.js'))
+app.use('/Admin',require('./routes/adminPages.js') )
 // Starting the server
 app.listen(5000, () => {
    console.log("servr start on 5000");
