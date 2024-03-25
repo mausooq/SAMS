@@ -77,5 +77,14 @@ CREATE TABLE MARKS(
     foreign key (semId) references semester(semId)
 );
 
+CREATE TABLE admin (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+     email VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
+INSERT INTO admin (username, password, email) 
+VALUES ('ADMIN', 'admin123', 'admin@gmail.com');
 

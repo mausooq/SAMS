@@ -27,6 +27,8 @@ db.connect((err) => {
    }
 });
 
+
+
 // Setting the public directory
 const publicDirectory =path.join(__dirname,'./public');
 app.use(express.json());
