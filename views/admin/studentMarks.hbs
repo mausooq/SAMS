@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMS:MARKS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/marks.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <style>
+        .semBox {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .semester-box {
+            width: 150px;
+            height: 150px;
+            margin: 0px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1.2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+  <nav>
+    <h3><a href="/Admin/Dashboard">SAMS</a></h3>
+
+  </nav>
+    <div class="container">
+        <div class="semBox">
+            <div class="semester-box" onclick="location.href='/marks/sem1'">Semester 1</div>
+            <div class="semester-box" onclick="location.href='/marks/sem2'">Semester 2</div>
+            <div class="semester-box" onclick="location.href='/marks/sem3'">Semester 3</div>
+            <div class="semester-box" onclick="location.href='/marks/sem4'">Semester 4</div>
+            <div class="semester-box" onclick="location.href='/marks/sem5'">Semester 5</div>
+            <div class="semester-box" onclick="location.href='/marks/sem6'">Semester 6</div>
+            <div class="semester-box" onclick="location.href='/marks/sem7'">Semester 7</div>
+            <div class="semester-box" onclick="location.href='/marks/sem8'">Semester 8</div>
+        </div>
+    </div>
+   <footer>
+    <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
+    <a href="/adminAuth/logout">Logout</a>
+  </footer>
+</body>
+
+</html>

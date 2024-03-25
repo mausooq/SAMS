@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAMS:DASHBOARD</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/marks.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <style>
+        .main-admin {
+            min-width: 80vw;
+            min-height: 80vh;
+            max-height: 100%;
+            margin: 5%;
+            padding: 5px;
+            background-color: #f1f1f1;
+            margin-bottom: 10%;
+        }
+
+        .Go-btn {
+            background-color: #1c60af;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .Go-btn:hover {
+            background-color: #327dbf;
+        }
+
+        .student-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-container {
+            margin: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 70vw;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h3><a href="/dashboard">SAMS</a></h3>
+    </nav>
+
+    <div class="container">
+        <div class="main-admin">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search Student by Name or USN"
+                    oninput="searchStudents(this.value)">
+            </div>
+            <div class="collapsible" id="student">Student</div>
+            <!-- Within each semester collapsible section -->
+            <div class="content">
+                <div class="items">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Details</th>
+                                <th style="width: 70px;">Vist</th>
+                            </tr>
+                        </thead>
+                        <tbody class="marks-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
+        <a href="/adminAuth/logout">Logout</a>
+    </footer>
+    <script>
+        let originalStudents = [];
+
+        // Make a simple GET request using fetch
+        fetch('/adminAuth/student')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                originalStudents = data;
+                renderStudents(originalStudents);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+        function renderStudents(students) {
+            // Clear existing table content
+            const tbody = document.querySelector(".marks-tbody");
+            tbody.innerHTML = "";
+
+            // Populate the table with fetched data
+            students.forEach((student) => {
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+                <td class="student-detail">${student.name}
+                    <br>
+                    ${student.usn}
+                    <br>
+                    <span> ${student.email}<span/>
+                   <br
+                </td>
+                 <td id="${student.id}"><button class="Go-btn" onclick="redirectToStudent('/Admin/studentDashboard/?id=${student.id}')">Go</td>
+            `;
+                tbody.appendChild(newRow);
+            });
+        }
+
+        function searchStudents(searchTerm) {
+            const filteredStudents = originalStudents.filter(student =>
+                student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                student.usn.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            renderStudents(filteredStudents);
+        }
+        function redirectToStudent(url) {
+            window.location.href = url; // Redirect to the student's URL
+        }
+    </script>
+</body>
+
+</html>

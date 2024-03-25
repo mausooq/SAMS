@@ -7,48 +7,34 @@
     <title>SAMS:PROJECT</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/cards.css">
 
 </head>
 
 <body>
-    <nav>
-        <h3><a href="/dashboard">SAMS</a></h3>
-        <ul>
-            <li><a href="/marks">MARKS</a></li>
-            <li><a href="/projects">PROJECTS</a></li>
-            <li><a href="/achievement">ACHIEVEMENTS</a></li>
+  <nav>
+    <h3><a href="/Admin/Dashboard">SAMS</a></h3>
 
-        </ul>
-    </nav>
+  </nav>
 
     <div class="container " id="container">
 
     </div>
-    <div class="createBtn">
-        <button onclick="location.href='/addProject'">
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
-                </svg> Create
-            </span>
-        </button>
-    </div>
-    <footer>
-        <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
-        <a href="/auth/logout">Logout</a>
-    </footer>
+   <footer>
+    <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
+    <a href="/adminAuth/logout">Logout</a>
+  </footer>
     <script>
+        const id = {{ studentId }};
         // Make a simple GET request using fetch
-        fetch('/auth/project')
+        fetch('/adminAuth/project/?id=' + id)
             .then(response => response.json())
             .then(data => {
                 const projects = data.projects;
                 const projectCont = document.getElementById('container')
                 projects.forEach(project => {
+
                     const projectCard = document.createElement("div")
                     projectCard.classList.add("container-card")
 
