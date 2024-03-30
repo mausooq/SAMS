@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMS:PROJECT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/cards.css">
+
+</head>
+
+<body>
+  <nav>
+    <h3><a href="/Admin/Dashboard">SAMS</a></h3>
+
+  </nav>
+
+    <div class="container " id="container">
+
+    </div>
+   <footer>
+    <div>© 2021 - Made with &hearts; by Mausooq & Nafih</div>
+    <a href="/adminAuth/logout">Logout</a>
+  </footer>
+    <script>
+        const id = {{ studentId }};
+        // Make a simple GET request using fetch
+        fetch('/adminAuth/project/?id=' + id)
+            .then(response => response.json())
+            .then(data => {
+                const projects = data.projects;
+                const projectCont = document.getElementById('container')
+                projects.forEach(project => {
+
+                    const projectCard = document.createElement("div")
+                    projectCard.classList.add("container-card")
+
+                    const projectTitle = document.createElement("h1")
+                    projectTitle.textContent = project.title;
+
+                    const imageElement = document.createElement("img")
+                    imageElement.src = project.image_path;
+                    imageElement.alt = project.title;
+
+                    const projectDate = document.createElement("p")
+                    projectDate.textContent = project.date;
+
+                    const projectLocation = document.createElement("p");
+                    projectLocation.textContent = project.location;
+
+                    const projectDescription = document.createElement("p");
+                    projectDescription.textContent = project.description;
+
+                    projectCard.appendChild(projectTitle);
+                    projectCard.appendChild(imageElement);
+                    projectCard.appendChild(projectDate);
+                    projectCard.appendChild(projectLocation);
+                    projectCard.appendChild(projectDescription);
+
+                    projectCont.appendChild(projectCard);
+
+                })
+            }).catch(err => {
+                console.log(err)
+            })
+    </script>
+</body>
+
+</html>
+
+
+
+{{!-- make changes --}}
